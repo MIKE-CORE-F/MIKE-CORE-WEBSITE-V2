@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mike-core-f.github.io/MIKE-CORE-WEBSITE/sitemap.xml
+Sitemap: https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/sitemap.xml
