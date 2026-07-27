@@ -1,127 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- ROOT FILES -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/index.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/contact.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/contact_en.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/ABOUT_MIKE_CORE_EN.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/OVER_MIKE_CORE_DUTCH.html</loc></url>
+  <url>
+    <loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/</loc>
+    <priority>1.0</priority>
+  </url>
 
-  <!-- MIKE-CORE (ASCII FIXED) -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Fundamentals_v1.0_EN.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Fundamentals_v1.0_DUTCH.html</loc></url>
+  <url>
+    <loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/index_en.html</loc>
+    <priority>0.9</priority>
+  </url>
 
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_DriftControl_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_DriftControl_v1.0_EN.html</loc></url>
+  <!-- ABOUT -->
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/ABOUT/index.html</loc></url>
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/ABOUT/ABOUT_MIKE_CORE_EN.html</loc></url>
 
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_Ecosystem_Guidev_1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_Ecosystem_Guidev_1.0-EN.html</loc></url>
+  <!-- MIKE-CORE -->
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/MIKE-CORE/index.html</loc></url>
 
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_StabilityFramework_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_StabilityFramework_v1.0_EN.html</loc></url>
+  <!-- AI-OS-FUSION -->
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/AI-OS-FUSION/index.html</loc></url>
 
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_DomainLayers_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_DomainLayers_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_FlowPrinciples_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_FlowPrinciples_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_License_Overview_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_License_Overview_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_ModulesOverview_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Public_ModulesOverview_v1.0_EN.html</loc></url>
+  <!-- TRIAD -->
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/TRIAD/index.html</loc></url>
 
   <!-- TRAINING -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Training_Inclusie_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Training_FAQ_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Training_FAQ_v1.0_EN.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Training_Methodology_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Training_Methodology_v1.0_EN.html</loc></url>
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/TRAINING/index.html</loc></url>
 
-  <!-- COMMUNITY / FUTURE / PRACTICAL -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Community_Impact_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Community_Impact_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Future_Opportunities_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Future_Opportunities_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Practical_Training_Examples_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/MIKE-CORE_Practical_Training_Examples_v1.0_EN.html</loc></url>
-
-  <!-- AIEWS -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_AI_Drift_Stability_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_AI_Drift_Stability_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_AI_Ecosystem_Mapping_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_AI_Ecosystem_Mapping_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_GovernanceModel_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_GovernanceModel_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_Overview_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_Overview_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_Practical_UseCases_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_Practical_UseCases_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_VisualMap_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_VisualMap_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_WhatIsAIEWS_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_WhatIsAIEWS_v1.0-EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_WhiteBox_AI_v1.0-DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/AIEWS_Public_WhiteBox_AI_v1.0-EN.html</loc></url>
-
-  <!-- VISUAL MAPS -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/triad_3layer_map_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/triad_3layer_map_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/dodecad_12x12_matrix_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/dodecad_12x12_matrix_EN.html</loc></url>
-
-  <!-- ARTICLES -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_DUTCH.v1.0.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/28_XMIKE_CORE_ARTICLE_28_LEAN_SIXSIGMA_AS_LOCAL_OPTIMIZATION_v1.0_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_DUTCH.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/29_XMIKE_CORE_ARTICLE_29_SCRUM_AS_RITUAL_NOT_STRUCTURE_v1.0_EN.html</loc></url>
-
-  <!-- SUBFOLDER -->
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/index.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/ABOUT_MIKE-CORE.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/ABOUT_MIKE-CORE_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/AIEWS_PUBLIC_INFO.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/AIEWS_PUBLIC_INFO_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T1_BASIC.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T1_BASIC_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T2_PROFESSIONAL.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T2_PROFESSIONAL_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T3_MASTER.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/LICENSE_T3_MASTER_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_CONTACT.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_CONTACT_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_ECOSYSTEM_OVERVIEW.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_ECOSYSTEM_OVERVIEW_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_LICENSING_PRICING_EN.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_LICENSING_PRICING_v1.1.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_ROADMAP.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/MIKE_CORE_ROADMAP_EN.html</loc></url>
-
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/TRIAD_1.0_BASIC.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/TRIAD_1.0_BASIC_EN.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/TRIAD_1.0_PROFESSIONAL.html</loc></url>
-  <url><loc>https://mike-core-f.github.io/MIKE-CORE-WEBSITE/05_MIKE_CORE_LICENSING_CENTER_GITHUB_UPLOAD/TRIAD_1.0_PROFESSIONAL_EN.html</loc></url>
+  <!-- CONTACT -->
+  <url><loc>https://mike-core.github.io/MIKE-CORE-WEBSITE-V2/CONTACT/index.html</loc></url>
 
 </urlset>
