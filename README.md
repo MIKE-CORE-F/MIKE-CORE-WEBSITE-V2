@@ -66,11 +66,6 @@ TRIAD 3‑Layer Map
 
 📬 Contact
 mikecore.public@gmail.com
-
-
-
-
-
 🇬🇧 MIKE‑CORE‑WEBSITE‑V2 — Public Ecosystem Website (V2)
 MIKE‑CORE‑WEBSITE‑V2 is the second‑generation official MIKE‑CORE™ public website.
 This version introduces a fully rebuilt HTML architecture, improved structure, higher performance, and a clear separation between ecosystem modules, documentation, and public content.
