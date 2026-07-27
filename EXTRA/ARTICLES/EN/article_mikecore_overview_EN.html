@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE • Ecosystem Overview (EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;
+      background:var(--bg-main);
+      color:var(--text-main);
+      font-family:var(--font-main);
+      line-height:1.6;
+      padding:40px 0;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 16px 80px;
+    }
+
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+    }
+    .back-btn {
+      padding:10px 20px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--text-main);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      transform:translateY(-2px);
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+    }
+
+    header.hero {
+      text-align:left;
+      margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:20px;
+    }
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:720px;}
+    .hero-meta {margin-top:10px;font-size:12px;color:var(--text-muted);}
+
+    .section {
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--accent-silver);
+      margin-bottom:10px;
+    }
+    p,ul {color:var(--text-soft);font-size:14px;}
+    ul {margin-left:18px;}
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:16px;
+      margin-top:10px;
+    }
+    .card {
+      background:radial-gradient(circle at top,rgba(58,169,255,0.12),transparent 60%),
+                 rgba(8,12,26,0.96);
+      border-radius:14px;
+      border:1px solid rgba(58,169,255,0.25);
+      padding:14px 14px 16px;
+    }
+    .card-label {font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-silver-soft);}
+    .card-title {font-size:15px;color:var(--accent-blue);margin-bottom:6px;}
+    .card p {font-size:13px;margin:0;}
+
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="back-nav">
+    <a href="../index.html" class="back-btn">⟵ Articles (EN) Root</a>
+    <a href="../../index.html" class="back-btn">⟵ EXTRA Module</a>
+    <a href="../../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  </div>
+
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">MIKE‑CORE Ecosystem Overview</h1>
+        <p class="hero-subtitle">
+          A public introduction to the MIKE‑CORE ecosystem — without internal blueprint structures, without reproducible architecture, fully safe for open publication.
+        </p>
+        <div class="hero-meta">Public layer — safe, non‑reproducible.</div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">What Is MIKE‑CORE?</div>
+        <p>
+          MIKE‑CORE is an <strong>ecosystemic framework</strong> that structures stability, direction, identity, and evolution within complex digital and organizational environments.  
+          It is not a method, not a workflow, not a process — it is an <em>ecosystem</em>.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Core</div>
+            <div class="card-title">Ecosystemic stability</div>
+            <p>MIKE‑CORE prevents drift, chaos, and inconsistency.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Structure</div>
+            <div class="card-title">Multiple layers</div>
+            <p>Public layer, domains, axes, modules, ecosystemic flows.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Purpose</div>
+            <div class="card-title">Governance without noise</div>
+            <p>The ecosystem remains coherent, predictable, and safe.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">The Public Layer</div>
+        <p>
+          The public layer of MIKE‑CORE shows only philosophy, meaning, and ecosystemic effects — never internal blueprint architecture.
+        </p>
+
+        <ul>
+          <li>Safe for open publication</li>
+          <li>No reproducible architecture</li>
+          <li>No internal ecosystem mechanisms</li>
+          <li>Only philosophy, structure, and meaning</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Ecosystemic Components</div>
+        <p>
+          MIKE‑CORE consists of multiple public components that form one coherent ecosystem.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Axis</div>
+            <div class="card-title">I‑Axis</div>
+            <p>Identity of ecosystem components.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Axis</div>
+            <div class="card-title">R‑Axis</div>
+            <p>Direction and course of ecosystem movement.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Axis</div>
+            <div class="card-title">T‑Axis</div>
+            <p>Transition and evolution within safe boundaries.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Domains</div>
+            <div class="card-title">Ecosystemic areas</div>
+            <p>Clear meaning without internal details.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Modules</div>
+            <div class="card-title">Functional ecosystem components</div>
+            <p>Public structure without internal blueprint.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Why MIKE‑CORE?</div>
+        <p>
+          MIKE‑CORE provides a way to stabilize, structure, and protect complex ecosystems from drift, chaos, and inconsistency.
+        </p>
+
+        <ul>
+          <li>Stability in complex environments</li>
+          <li>Predictable ecosystemic evolution</li>
+          <li>Clear boundaries of responsibility</li>
+          <li>Safe public communication</li>
+        </ul>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Public Overview EN v1.0
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

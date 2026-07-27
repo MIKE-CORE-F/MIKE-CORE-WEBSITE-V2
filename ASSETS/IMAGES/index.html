@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>MIKE‑CORE • Image Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-alt: #0b0d13;
+      --border: #262a36;
+      --accent: #4f7bff;
+      --accent-soft: #1b2640;
+      --text-main: #f5f5f7;
+      --text-muted: #9ca0b3;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top center,
+        #151827 0%,
+        #0b0d13 40%,
+        #05060a 100%);
+      background-size: cover;
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1rem;
+      border-radius: 24px;
+      background: radial-gradient(circle at top, #4f7bff 0%, #151827 45%, #05060a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      box-shadow: 0 0 50px rgba(79, 123, 255, 0.45);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: 0.06em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.05rem;
+    }
+
+    .back-nav {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .back-btn {
+      padding: 0.8rem 1.4rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      margin-top: 2.5rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .module-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .module-card {
+      background: var(--bg-alt);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 1.6rem;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .module-card:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .thumb {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      background: #05060a;
+    }
+
+    .module-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .module-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">IMAGES</div>
+  <h1>Image Library</h1>
+  <p class="tagline">
+    Centrale neon‑fusion beeldbibliotheek voor MIKE‑CORE, FUSION, TRIAD en AIEWS visuals.
+  </p>
+</header>
+
+<div class="back-nav">
+  <a href="../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  <a href="../index.html" class="back-btn">⟵ ASSETS Home</a>
+  <a href="./index.html" class="back-btn">⟵ IMAGES Home</a>
+</div>
+
+<main>
+  <h2 class="section-title">Beeldcategorieën</h2>
+
+  <div class="module-grid">
+
+    <a class="module-card" href="BACKGROUNDS/index.html">
+      <img src="BACKGROUNDS/ecosystem_core_background.png" class="thumb" alt="Backgrounds">
+      <div class="module-title">Backgrounds</div>
+      <div class="module-desc">Neon‑fusion achtergronden voor alle ecosystemen.</div>
+    </a>
+
+    <a class="module-card" href="ICONS/index.html">
+      <img src="LOGOS/mikecore_logo.png" class="thumb" alt="Icons">
+      <div class="module-title">Icons</div>
+      <div class="module-desc">Ecosystem‑iconen voor MIKE‑CORE, FUSION, TRIAD en AIEWS.</div>
+    </a>
+
+    <a class="module-card" href="LOGOS/index.html">
+      <img src="LOGOS/mikecore_logo.png" class="thumb" alt="Logos">
+      <div class="module-title">Logos</div>
+      <div class="module-desc">Branding‑logo’s voor alle subsystemen.</div>
+    </a>
+
+    <a class="module-card" href="MIKECORE_VISUALS/index.html">
+      <img src="MIKECORE_VISUALS/MIKE-CORE_VISUALS_diagram.png" class="thumb" alt="MIKE‑CORE Visuals">
+      <div class="module-title">MIKE‑CORE Visuals</div>
+      <div class="module-desc">7‑layer diagram, drift‑control, ecosystem, security.</div>
+    </a>
+
+    <a class="module-card" href="TRIAD_VISUALS/index.html">
+      <img src="BACKGROUNDS/TRIAD Neon Background.png" class="thumb" alt="TRIAD Visuals">
+      <div class="module-title">TRIAD Visuals</div>
+      <div class="module-desc">3‑layer map, ecosystem diagram, learning flow.</div>
+    </a>
+
+    <a class="module-card" href="AIEWS_VISUALS/index.html">
+      <img src="BACKGROUNDS/AIEWS Neon Background.png" class="thumb" alt="AIEWS Visuals">
+      <div class="module-title">AIEWS Visuals</div>
+      <div class="module-desc">Architecture, ecosystem map, trust‑zones.</div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <p>
+    © 2026 MIKE‑CORE™ IT‑Constitutional Ecosystem<br>
+    Reproduceerbaar • Audit‑vast • Juridisch beschermd
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* =========================================================
+   MIKE‑CORE ECOSYSTEM • THEME STYLESHEET
+   ---------------------------------------------------------
+   Colors, gradients, shadows, borders, and visual identity.
+   ========================================================= */
+
+:root {
+  /* Backgrounds */
+  --bg: #05060a;
+  --bg-alt: #0b0d13;
+
+  /* Borders */
+  --border: #262a36;
+
+  /* Accent Colors */
+  --accent: #4f7bff;
+  --accent-soft: #1b2640;
+
+  /* Text Colors */
+  --text-main: #f5f5f7;
+  --text-muted: #9ca0b3;
+
+  /* Logo */
+  --logo-bg: radial-gradient(circle at top, #4f7bff 0%, #151827 45%, #05060a 100%);
+  --logo-shadow: 0 0 50px rgba(79, 123, 255, 0.45);
+
+  /* Background Gradient */
+  --bg-gradient: radial-gradient(circle at top center,
+    #151827 0%,
+    #0b0d13 40%,
+    #05060a 100%);
+}
+
+/* Apply global background gradient */
+body {
+  background: var(--bg-gradient);
+  background-size: cover;
+  background-attachment: fixed;
+}

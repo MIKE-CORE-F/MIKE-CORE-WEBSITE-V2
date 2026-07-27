@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE-CORE Public Ecosystem Guide v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="title" content="MIKE-CORE Public Ecosystem Guide v1.0" />
+  <meta name="description" content="Public guide to the MIKE-CORE IT ecosystem: ecosystemic IT architecture, stability, coherence and reproducibility." />
+  <meta name="keywords" content="MIKE-CORE, IT ecosystem, ecosystemic architecture, reproducibility, stability, coherence, drift, dependencies" />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Fira Code", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(207, 216, 227, 0.10), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header.hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .hero-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      padding: 3px 10px;
+      border-radius: var(--radius-chip);
+      border: 1px solid rgba(154, 164, 181, 0.4);
+      background: rgba(11, 16, 32, 0.8);
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+    }
+
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+    }
+
+    h2, h3, h4 {
+      margin: 14px 0 6px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: var(--accent-blue);
+    }
+
+    h4 {
+      font-size: 14px;
+      color: var(--accent-silver-soft);
+    }
+
+    p {
+      margin: 6px 0 8px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 4px 0 10px 18px;
+      padding: 0;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    li {
+      margin: 3px 0;
+    }
+
+    .inline-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 10px;
+      border-radius: var(--radius-chip);
+      background: rgba(16, 22, 40, 0.95);
+      border: 1px solid rgba(58, 169, 255, 0.4);
+      font-size: 11px;
+      color: var(--accent-silver);
+      margin: 2px 4px 2px 0;
+    }
+
+    .inline-chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3aa9ff;
+    }
+
+    .callout {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: radial-gradient(circle at left, rgba(58, 169, 255, 0.18), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border: 1px solid rgba(58, 169, 255, 0.45);
+      font-size: 13px;
+      color: var(--accent-silver);
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .glass-panel {
+        padding: 22px 18px 28px;
+      }
+      .hero-title {
+        font-size: 24px;
+      }
+      .section {
+        padding: 16px 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <!-- Page 1 — Cover -->
+      <header class="hero" id="page-1">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE-CORE ECOSYSTEM • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">MIKE‑CORE Public Ecosystem Guide v1.0</h1>
+        <p class="hero-subtitle">
+          The foundations of ecosystemic IT architecture in a world that is becoming increasingly complex.
+          This public edition reveals the philosophy, principles and high‑level structure, without exposing the core or blueprint.
+        </p>
+        <div class="hero-meta">
+          <span>© 2026 MIKE‑CORE — All Rights Reserved</span>
+          <span>Public Ecosystem Guide v1.0</span>
+          <span>Architect: MIKE Verhelst</span>
+        </div>
+      </header>
+
+      <!-- Page 2 — Foreword -->
+      <section class="section" id="page-2">
+        <div class="section-header">
+          <div class="section-title">Foreword</div>
+          <div class="section-tag">Page 2</div>
+        </div>
+        <p>
+          The IT world is evolving faster than organisations can keep up. Systems are becoming more complex, dependencies grow,
+          and traditional frameworks are increasingly failing to guarantee stability. In this context,
+          <strong>MIKE‑CORE</strong> was created — an ecosystem that does not try to make teams work faster, but to make
+          <strong>IT structurally more stable, more coherent and reproducible</strong>.
+        </p>
+        <p>
+          This guide is written for:
+        </p>
+        <ul>
+          <li>IT architects</li>
+          <li>CTOs and CIOs</li>
+          <li>Team leads and domain owners</li>
+          <li>Enterprise organisations and governments</li>
+          <li>Anyone who feels that frameworks are no longer enough</li>
+        </ul>
+        <p>
+          This publication is a <strong>public introduction</strong>. The core, blueprint, validation chains and internal
+          ecosystemic logic are deliberately kept closed to protect the integrity of the ecosystem.
+        </p>
+        <p>
+          What you <strong>do</strong> get:
+        </p>
+        <ul>
+          <li>the philosophy of ecosystemic thinking</li>
+          <li>the high‑level structure of MIKE‑CORE</li>
+          <li>the core principles of stability, coherence and reproducibility</li>
+          <li>the way ecosystemic thinking transforms IT</li>
+        </ul>
+        <p>
+          What you <strong>do not</strong> get:
+        </p>
+        <ul>
+          <li>internal domain architecture</li>
+          <li>validation chains</li>
+          <li>TRIAD core and ecosystemic nerve paths</li>
+          <li>operational instructions or implementation details</li>
+        </ul>
+        <p>
+          This guide is intended to inspire, inform and lay a foundation for organisations that are ready
+          for the next step in IT architecture.
+        </p>
+      </section>
+
+      <!-- Page 3 — The crisis of modern IT -->
+      <section class="section" id="page-3">
+        <div class="section-header">
+          <div class="section-title">The crisis of modern IT</div>
+          <div class="section-tag">Page 3</div>
+        </div>
+        <p>
+          The IT sector is in a structural crisis that is rarely named explicitly. Not because technology
+          is failing, but because <strong>our way of organising</strong> no longer matches reality.
+        </p>
+
+        <h3>1. Complexity grows faster than structure</h3>
+        <p>
+          Modern systems consist of:
+        </p>
+        <ul>
+          <li>microservices and cloud platforms</li>
+          <li>API chains and distributed workloads</li>
+          <li>hybrid infrastructures and legacy systems</li>
+        </ul>
+        <p>
+          But the structures that are supposed to carry these systems are often:
+        </p>
+        <ul>
+          <li>ad‑hoc and historically grown</li>
+          <li>team‑based instead of ecosystemic</li>
+          <li>dependent on individual memory</li>
+          <li>not reproducible and hard to audit</li>
+        </ul>
+
+        <h3>2. Dependencies are the real bottleneck</h3>
+        <p>
+          It is not the technology that fails, but the <strong>invisible dependencies</strong> between teams, systems and processes.
+          Frameworks such as Scrum or Kanban:
+        </p>
+        <ul>
+          <li>visualise work</li>
+          <li>organise rhythm</li>
+          <li>create ceremonies</li>
+        </ul>
+        <p>
+          But they <strong>do not manage dependencies</strong>. And dependencies are exactly where systems break.
+        </p>
+
+        <h3>3. Drift is everywhere</h3>
+        <p>
+          Drift is the spontaneous deviation from:
+        </p>
+        <ul>
+          <li>agreements and processes</li>
+          <li>structure and architecture</li>
+          <li>direction and quality</li>
+        </ul>
+        <p>
+          Drift arises automatically in any system that lacks ecosystemic stability. Frameworks do not detect drift.
+          Ecosystems do.
+        </p>
+
+        <h3>4. Framework inflation</h3>
+        <p>
+          Organisations stack frameworks:
+        </p>
+        <ul>
+          <li>Scrum, SAFe, Kanban</li>
+          <li>ITIL, DevOps, Lean</li>
+        </ul>
+        <p>
+          But frameworks do not solve structural problems. They <strong>mask</strong> them with rhythm, ceremonies and
+          process optimisation. The crisis is not technological, but <strong>architectural</strong>.
+        </p>
+      </section>
+
+      <!-- Page 4 — Why ecosystemic thinking is needed -->
+      <section class="section" id="page-4">
+        <div class="section-header">
+          <div class="section-title">Why ecosystemic thinking is needed</div>
+          <div class="section-tag">Page 4</div>
+        </div>
+        <p>
+          For years, the IT world has tried to control complexity with frameworks, methodologies and
+          process optimisation. But frameworks are designed for <strong>teams</strong>, not for <strong>ecosystems</strong>.
+          They focus on rhythm, ceremonies and work visualisation — not on stability, dependencies or reproducibility.
+        </p>
+
+        <h3>1. Frameworks optimise locally, ecosystems optimise globally</h3>
+        <p>
+          Scrum optimises one team. Kanban optimises flow. DevOps optimises collaboration. But no framework
+          optimises:
+        </p>
+        <ul>
+          <li>the cohesion between teams</li>
+          <li>the stability of the whole</li>
+          <li>the dependencies between systems</li>
+          <li>the reproducibility of architecture</li>
+        </ul>
+        <p>Ecosystems do.</p>
+
+        <h3>2. Modern IT is too complex for team‑level solutions</h3>
+        <p>
+          An organisation does not consist of one team, but of:
+        </p>
+        <ul>
+          <li>dozens of teams</li>
+          <li>hundreds of systems</li>
+          <li>thousands of dependencies</li>
+        </ul>
+        <p>
+          Frameworks cannot carry this complexity. Ecosystems are built for it.
+        </p>
+
+        <h3>3. Ecosystems prevent chaos where frameworks do not see it</h3>
+        <p>
+          Frameworks detect:
+        </p>
+        <ul>
+          <li>delays and blockers</li>
+          <li>inefficiency and process issues</li>
+        </ul>
+        <p>
+          Ecosystems detect:
+        </p>
+        <ul>
+          <li>drift</li>
+          <li>dependency breaks</li>
+          <li>incoherence</li>
+          <li>architectural instability</li>
+        </ul>
+        <p>That is the difference between <strong>symptoms</strong> and <strong>causes</strong>.</p>
+
+        <h3>4. Ecosystems create calm instead of rhythm</h3>
+        <p>
+          Frameworks create rhythm. Ecosystems create calm. Calm is:
+        </p>
+        <ul>
+          <li>predictability</li>
+          <li>stability</li>
+          <li>reproducibility</li>
+          <li>coherence</li>
+        </ul>
+        <p>
+          Calm is the basis on which rhythm can exist — not the other way around.
+        </p>
+      </section>
+
+      <!-- Page 5 — What is an IT ecosystem? -->
+      <section class="section" id="page-5">
+        <div class="section-header">
+          <div class="section-title">What is an IT ecosystem?</div>
+          <div class="section-tag">Page 5</div>
+        </div>
+        <p>
+          An IT ecosystem is not a framework, not a process model and not a methodology. It is an
+          <strong>architectural layer</strong> that sits above frameworks and safeguards the <strong>stability of the whole</strong>.
+        </p>
+        <p>An ecosystem consists of:</p>
+
+        <h3>1. Principles</h3>
+        <p>
+          The philosophical basis that determines how the system behaves.
+        </p>
+
+        <h3>2. Axes</h3>
+        <p>
+          Fundamental perspectives that structure direction, identity and transition.
+          <br /><em>(The internal workings of the axes remain closed in this public edition.)</em>
+        </p>
+
+        <h3>3. Domains</h3>
+        <p>
+          Large functional areas, each carrying a part of the ecosystem.
+          <br /><em>(The exact domain structure remains internal.)</em>
+        </p>
+
+        <h3>4. Modules</h3>
+        <p>
+          Loose, portable components that operate within the ecosystem.
+        </p>
+
+        <h3>5. Validation chains</h3>
+        <p>
+          Mechanisms that detect drift, inconsistency and dependency breaks.
+          <br /><em>(The full chains remain confidential.)</em>
+        </p>
+
+        <h3>6. Governance</h3>
+        <p>
+          Not bureaucratic, but ecosystemic: minimal rules, maximum stability.
+        </p>
+
+        <h3>Framework vs. ecosystem</h3>
+        <p><strong>Frameworks:</strong></p>
+        <ul>
+          <li>focus on teams</li>
+          <li>organise rhythm</li>
+          <li>define ceremonies</li>
+          <li>are minimalist and context‑dependent</li>
+        </ul>
+        <p><strong>Ecosystems:</strong></p>
+        <ul>
+          <li>focus on the whole</li>
+          <li>create stability</li>
+          <li>manage dependencies</li>
+          <li>prevent drift and are reproducible</li>
+        </ul>
+        <p>Frameworks are tools. Ecosystems are foundations.</p>
+      </section>
+
+      <!-- Page 6 — The philosophy of MIKE-CORE -->
+      <section class="section" id="page-6">
+        <div class="section-header">
+          <div class="section-title">The philosophy of MIKE‑CORE</div>
+          <div class="section-tag">Page 6</div>
+        </div>
+        <p>
+          MIKE‑CORE is built on three core principles that together form the basis of ecosystemic IT architecture:
+        </p>
+
+        <h3>1. Stability over rhythm</h3>
+        <p>
+          Frameworks focus on rhythm: sprints, ceremonies, cadence. But rhythm without stability is organised chaos.
+          MIKE‑CORE creates stability through:
+        </p>
+        <ul>
+          <li>reproducible structures</li>
+          <li>coherent domains</li>
+          <li>drift control</li>
+          <li>dependency management</li>
+        </ul>
+        <p>Stability is not a luxury — it is a prerequisite.</p>
+
+        <h3>2. Coherence over speed</h3>
+        <p>
+          Speed without coherence leads to:
+        </p>
+        <ul>
+          <li>technical debt</li>
+          <li>inconsistency</li>
+          <li>architectural breaks</li>
+          <li>unpredictable risks</li>
+        </ul>
+        <p>
+          Coherence means that everything fits together logically, every module strengthens the whole and every decision is
+          ecosystemically responsible. Coherence is the oxygen of a healthy IT landscape.
+        </p>
+
+        <h3>3. Reproducibility over improvisation</h3>
+        <p>
+          Improvisation is the enemy of stability. Reproducibility is the basis of:
+        </p>
+        <ul>
+          <li>audit safety</li>
+          <li>scalability</li>
+          <li>reliability</li>
+          <li>predictability</li>
+        </ul>
+        <p>
+          An ecosystem that is not reproducible is not an ecosystem — it is a collection of coincidences.
+        </p>
+      </section>
+
+      <!-- Page 7 — High-level architecture (public version) -->
+      <section class="section" id="page-7">
+        <div class="section-header">
+          <div class="section-title">High‑level architecture (public version)</div>
+          <div class="section-tag">Page 7</div>
+        </div>
+        <p>
+          The full architecture of MIKE‑CORE is deliberately kept closed in this public edition. What is described below
+          is the <strong>conceptual top layer</strong> — enough to understand the ecosystem, but without exposing the internal
+          blueprint, validation chains or domain logic.
+        </p>
+        <p>The high‑level architecture consists of four visible components:</p>
+
+        <h3>1. The axes (I, R, T axis)</h3>
+        <p>
+          The axes form the three fundamental perspectives of the ecosystem. They structure:
+        </p>
+        <ul>
+          <li><strong>Identity</strong> (I axis)</li>
+          <li><strong>Direction</strong> (R axis)</li>
+          <li><strong>Transition</strong> (T axis)</li>
+        </ul>
+        <p>
+          Every decision, module or domain is filtered through these axes. They ensure that the ecosystem remains
+          <strong>coherent, reproducible and stable</strong>.
+          <br /><em>(The internal workings, mapping and validation chains of the axes remain confidential.)</em>
+        </p>
+
+        <h3>2. Domains (conceptual layer)</h3>
+        <p>
+          An ecosystem consists of different domains, each representing a part of IT reality. In the
+          public layer we only describe:
+        </p>
+        <ul>
+          <li>that domains exist</li>
+          <li>that together they form a coherent whole</li>
+          <li>that they are ecosystemically connected</li>
+        </ul>
+        <p><em>The exact domain structure, interrelations and validation chains remain internal.</em></p>
+
+        <h3>3. Modules</h3>
+        <p>
+          Modules are <strong>portable ecosystemic components</strong> that:
+        </p>
+        <ul>
+          <li>fulfil a specific function</li>
+          <li>can move independently</li>
+          <li>are reproducible</li>
+          <li>are drift‑safe</li>
+          <li>remain coherent within the whole</li>
+        </ul>
+        <p>
+          Examples of public modules include:
+        </p>
+        <ul>
+          <li>Framework Diagnostic Modules (such as a Scrum Diagnostic Module)</li>
+          <li>Stability Check Modules</li>
+          <li>Ecosystemic Flow Modules</li>
+        </ul>
+
+        <h3>4. Ecosystemic governance</h3>
+        <p>
+          Governance in MIKE‑CORE is not bureaucracy. It is a <strong>lightweight but indestructible structure</strong> that:
+        </p>
+        <ul>
+          <li>safeguards stability</li>
+          <li>manages dependencies</li>
+          <li>detects drift</li>
+          <li>enforces coherence</li>
+        </ul>
+        <p>The ecosystem operates with minimal rules, but maximum stability.</p>
+      </section>
+
+      <!-- Page 8 — Ecosystemic principles -->
+      <section class="section" id="page-8">
+        <div class="section-header">
+          <div class="section-title">Ecosystemic principles</div>
+          <div class="section-tag">Page 8</div>
+        </div>
+        <p>
+          MIKE‑CORE is built on a set of principles that determine how the ecosystem behaves. These principles are not
+          optional — they form the <strong>ecosystemic laws of nature</strong>.
+        </p>
+
+        <h3>1. Identity (I axis)</h3>
+        <p>
+          Identity determines:
+        </p>
+        <ul>
+          <li>what a module is</li>
+          <li>what a domain represents</li>
+          <li>which role a component plays</li>
+          <li>which boundaries it has</li>
+        </ul>
+        <p>Without identity, confusion, overlap and drift arise.</p>
+
+        <h3>2. Direction (R axis)</h3>
+        <p>
+          Direction determines:
+        </p>
+        <ul>
+          <li>where the ecosystem is heading</li>
+          <li>which goals have priority</li>
+          <li>how decisions are made</li>
+          <li>how coherence is safeguarded</li>
+        </ul>
+        <p>Direction prevents teams or systems from disappearing into their own micro‑reality.</p>
+
+        <h3>3. Transition (T axis)</h3>
+        <p>
+          Transition determines:
+        </p>
+        <ul>
+          <li>how change happens</li>
+          <li>how stability is preserved during evolution</li>
+          <li>how dependencies are protected</li>
+          <li>how drift is prevented during movement</li>
+        </ul>
+        <p>Transition is the art of changing without breaking.</p>
+
+        <h3>4. Drift control</h3>
+        <p>
+          Drift is the greatest enemy of any IT landscape. It arises spontaneously when:
+        </p>
+        <ul>
+          <li>teams improvise</li>
+          <li>documentation is missing</li>
+          <li>architecture is not monitored</li>
+          <li>dependencies shift</li>
+          <li>processes become inconsistent</li>
+        </ul>
+        <p>
+          MIKE‑CORE contains ecosystemic mechanisms to:
+        </p>
+        <ul>
+          <li>detect drift</li>
+          <li>isolate drift</li>
+          <li>correct drift</li>
+        </ul>
+        <p>An ecosystem without drift control is a house of cards.</p>
+      </section>
+
+      <!-- Page 9 — Reproducibility as a foundation -->
+      <section class="section" id="page-9">
+        <div class="section-header">
+          <div class="section-title">Reproducibility as a foundation</div>
+          <div class="section-tag">Page 9</div>
+        </div>
+        <p>
+          Reproducibility is the heart of ecosystemic IT. It is the property that determines whether a system can remain:
+        </p>
+        <ul>
+          <li>stable</li>
+          <li>predictable</li>
+          <li>scalable</li>
+          <li>audit‑safe</li>
+          <li>coherent</li>
+        </ul>
+        <p>and continue to function.</p>
+
+        <h3>1. Why reproducibility is essential</h3>
+        <p>
+          In modern IT, nothing is more dangerous than:
+        </p>
+        <ul>
+          <li>dependence on individual memory</li>
+          <li>undocumented decisions</li>
+          <li>ad‑hoc solutions</li>
+          <li>improvisation and inconsistency between teams</li>
+        </ul>
+        <p>
+          Reproducibility solves this by:
+        </p>
+        <ul>
+          <li>the same input → the same output</li>
+          <li>the same structure → the same stability</li>
+          <li>the same rules → the same coherence</li>
+        </ul>
+
+        <h3>2. How ecosystems guarantee reproducibility</h3>
+        <p>
+          MIKE‑CORE guarantees reproducibility through:
+        </p>
+        <ul>
+          <li>ecosystemic principles</li>
+          <li>axes that safeguard direction and identity</li>
+          <li>domains that enforce coherence</li>
+          <li>modules that are portable and consistent</li>
+          <li>validation chains that detect drift</li>
+          <li>governance that safeguards stability</li>
+        </ul>
+
+        <h3>3. Reproducibility is not a limitation — it is freedom</h3>
+        <p>
+          When a system is reproducible:
+        </p>
+        <ul>
+          <li>teams can work faster</li>
+          <li>declining risks become visible</li>
+          <li>audits become simple</li>
+          <li>dependencies become manageable</li>
+          <li>innovation becomes safer</li>
+        </ul>
+        <p>Reproducibility is not a brake, but an <strong>accelerator</strong>.</p>
+      </section>
+
+      <!-- Page 10 — Coherence and stability -->
+      <section class="section" id="page-10">
+        <div class="section-header">
+          <div class="section-title">Coherence and stability</div>
+          <div class="section-tag">Page 10</div>
+        </div>
+        <p>
+          Coherence and stability form the backbone of any mature IT ecosystem. Without coherence, fragmentation arises.
+          Without stability, chaos arises.
+        </p>
+        <p>
+          Frameworks try to create stability through rhythm (sprints, ceremonies, cadence). But rhythm is not stability —
+          rhythm is a <em>habit</em>. Stability is an <em>architectural property</em>.
+        </p>
+
+        <h3>1. Coherence: everything fits together logically</h3>
+        <p>
+          Coherence means:
+        </p>
+        <ul>
+          <li>every module has a clear identity</li>
+          <li>every decision fits within the direction of the ecosystem</li>
+          <li>every change respects the transition rules</li>
+          <li>every dependency is visible and manageable</li>
+        </ul>
+        <p>Coherence is the glue that prevents systems from falling apart.</p>
+
+        <h3>2. Stability: the system stays upright, even under pressure</h3>
+        <p>
+          Stability means:
+        </p>
+        <ul>
+          <li>reproducible processes</li>
+          <li>predictable results</li>
+          <li>consistent architecture</li>
+          <li>minimal drift</li>
+          <li>controlled dependencies</li>
+        </ul>
+        <p>
+          A stable ecosystem can:
+        </p>
+        <ul>
+          <li>grow without breaking</li>
+          <li>change without chaos</li>
+          <li>allow teams to change without loss of knowledge</li>
+          <li>withstand audits without stress</li>
+        </ul>
+
+        <h3>3. Why frameworks cannot guarantee stability</h3>
+        <p>
+          Frameworks:
+        </p>
+        <ul>
+          <li>are team‑based</li>
+          <li>are rhythm‑based</li>
+          <li>are context‑dependent</li>
+          <li>lack architectural depth</li>
+        </ul>
+        <p>
+          They can <em>simulate</em> stability, but not <em>guarantee</em> it. Ecosystems can.
+        </p>
+      </section>
+            <!-- Page 11 — Dependency management -->
+      <section class="section" id="page-11">
+        <div class="section-header">
+          <div class="section-title">Dependency Management</div>
+          <div class="section-tag">Page 11</div>
+        </div>
+        <p>
+          Dependencies are the invisible fault lines of modern IT. Not technology, but dependencies determine:
+        </p>
+        <ul>
+          <li>risk</li>
+          <li>speed</li>
+          <li>stability</li>
+          <li>quality</li>
+          <li>audit safety</li>
+        </ul>
+        <p>An ecosystem that does not manage dependencies is doomed to instability.</p>
+
+        <h3>1. Why dependencies are dangerous</h3>
+        <p>
+          Dependencies:
+        </p>
+        <ul>
+          <li>slow teams down</li>
+          <li>create bottlenecks</li>
+          <li>cause drift</li>
+          <li>make systems fragile</li>
+          <li>increase risks</li>
+          <li>hide problems until it is too late</li>
+        </ul>
+        <p>Frameworks do not see dependencies. They visualise work, not structure.</p>
+
+        <h3>2. Ecosystems make dependencies visible</h3>
+        <p>
+          MIKE‑CORE makes dependencies visible through:
+        </p>
+        <ul>
+          <li>ecosystemic axes</li>
+          <li>domain structures</li>
+          <li>coherence rules</li>
+          <li>validation chains</li>
+          <li>reproducible modules</li>
+        </ul>
+        <p>Visibility is the first step toward control.</p>
+
+        <h3>3. Ecosystems control dependencies</h3>
+        <p>
+          Control means:
+        </p>
+        <ul>
+          <li>dependencies are mapped</li>
+          <li>dependencies are monitored</li>
+          <li>dependencies are stabilised</li>
+          <li>dependencies are optimised</li>
+        </ul>
+        <p>
+          An ecosystem that controls dependencies becomes:
+        </p>
+        <ul>
+          <li>faster</li>
+          <li>safer</li>
+          <li>more stable</li>
+          <li>more predictable</li>
+        </ul>
+      </section>
+
+      <!-- Page 12 — Drift: the invisible fault line -->
+      <section class="section" id="page-12">
+        <div class="section-header">
+          <div class="section-title">Drift: the invisible fault line</div>
+          <div class="section-tag">Page 12</div>
+        </div>
+        <p>
+          Drift is the greatest enemy of any IT landscape. It is invisible, creeping and destructive.
+        </p>
+        <p>
+          Drift arises when:
+        </p>
+        <ul>
+          <li>teams improvise</li>
+          <li>documentation is missing</li>
+          <li>architecture is not monitored</li>
+          <li>dependencies shift</li>
+          <li>processes become inconsistent</li>
+          <li>frameworks are applied incorrectly</li>
+        </ul>
+        <p>
+          Drift is not a mistake — it is a law of nature. Without ecosystemic control, drift arises automatically.
+        </p>
+
+        <h3>1. What causes drift</h3>
+        <p>
+          Drift arises from:
+        </p>
+        <ul>
+          <li>human variation</li>
+          <li>context switching</li>
+          <li>team changes</li>
+          <li>technical debt</li>
+          <li>unclear responsibilities</li>
+          <li>lack of reproducibility</li>
+        </ul>
+
+        <h3>2. How ecosystems detect drift</h3>
+        <p>
+          MIKE‑CORE detects drift through:
+        </p>
+        <ul>
+          <li>validation chains</li>
+          <li>coherence rules</li>
+          <li>ecosystemic axes</li>
+          <li>domain structures</li>
+          <li>reproducible modules</li>
+        </ul>
+        <p>Drift becomes visible, measurable and correctable.</p>
+
+        <h3>3. How ecosystems prevent drift</h3>
+        <p>
+          Prevention happens through:
+        </p>
+        <ul>
+          <li>stable architecture</li>
+          <li>clear identity</li>
+          <li>consistent direction</li>
+          <li>controlled transition</li>
+          <li>reproducible processes</li>
+        </ul>
+        <p>
+          An ecosystem without drift control is a house of cards. An ecosystem with drift control is indestructible.
+        </p>
+      </section>
+
+      <!-- Page 13 — Frameworks within the ecosystem -->
+<section class="section" id="page-13">
+  <div class="section-header">
+    <div class="section-title">Frameworks within the ecosystem</div>
+    <div class="section-tag">Page 13</div>
+  </div>
+  <p>
+    Frameworks are valuable, but they are not foundations. They are <strong>tools</strong>, not architecture. They are
+    <strong>rhythm</strong>, not stability. They are <strong>team‑based</strong>, not ecosystemic.
+  </p>
+  <p>
+    In MIKE‑CORE, frameworks are not abolished — they are <strong>repositioned</strong>. Frameworks become
+    <strong>modules</strong>, not leading structures.
+  </p>
+
+  <h3>1. Scrum within the ecosystem</h3>
+  <p>Scrum is:</p>
+  <ul>
+    <li>lightweight and rhythmic</li>
+    <li>team‑oriented</li>
+    <li>minimalistic</li>
+  </ul>
+  <p>But Scrum:</p>
+  <ul>
+    <li>does not manage dependencies</li>
+    <li>does not detect drift</li>
+    <li>does not guarantee reproducibility</li>
+    <li>does not create coherence</li>
+  </ul>
+  <p>
+    Within MIKE‑CORE, Scrum becomes a <strong>diagnostic module</strong>:
+  </p>
+  <ul>
+    <li>to measure rhythmic friction</li>
+    <li>to make dependencies visible</li>
+    <li>to detect drift</li>
+    <li>to test team coherence</li>
+  </ul>
+
+  <h3>2. Kanban within the ecosystem</h3>
+  <p>Kanban is:</p>
+  <ul>
+    <li>visual</li>
+    <li>flow‑based</li>
+    <li>flexible</li>
+  </ul>
+  <p>But Kanban:</p>
+  <ul>
+    <li>does not stabilise architecture</li>
+    <li>does not monitor domains</li>
+    <li>does not protect dependencies</li>
+  </ul>
+  <p>
+    Within MIKE‑CORE, Kanban becomes a <strong>flow module</strong>:
+  </p>
+  <ul>
+    <li>to detect bottlenecks</li>
+    <li>to analyse lead times</li>
+    <li>to make process variation visible</li>
+  </ul>
+
+  <h3>3. DevOps within the ecosystem</h3>
+  <p>DevOps is:</p>
+  <ul>
+    <li>culture</li>
+    <li>automation</li>
+    <li>collaboration</li>
+  </ul>
+  <p>But DevOps:</p>
+  <ul>
+    <li>lacks architectural governance</li>
+    <li>lacks ecosystemic stability</li>
+    <li>lacks reproducibility at system level</li>
+  </ul>
+  <p>
+    Within MIKE‑CORE, DevOps becomes an <strong>operational module</strong>:
+  </p>
+  <ul>
+    <li>for automation</li>
+    <li>for deployment stability</li>
+    <li>for technical coherence</li>
+  </ul>
+
+  <h3>4. ITIL within the ecosystem</h3>
+  <p>ITIL is:</p>
+  <ul>
+    <li>process‑oriented</li>
+    <li>service‑based</li>
+    <li>documentation‑heavy</li>
+  </ul>
+  <p>But ITIL:</p>
+  <ul>
+    <li>is not ecosystemic</li>
+    <li>is not lightweight</li>
+    <li>is not drift‑safe</li>
+  </ul>
+  <p>
+    Within MIKE‑CORE, ITIL becomes a <strong>service governance module</strong>:
+  </p>
+  <ul>
+    <li>for incident management</li>
+    <li>for change control</li>
+    <li>for service stability</li>
+  </ul>
+
+  <p>
+    Conclusion: frameworks are useful, but they are <strong>components</strong>, not foundations. MIKE‑CORE is the
+    foundation.
+  </p>
+</section>
+
+<!-- Page 14 — The role of teams -->
+<section class="section" id="page-14">
+  <div class="section-header">
+    <div class="section-title">The role of teams in an ecosystem</div>
+    <div class="section-tag">Page 14</div>
+  </div>
+  <p>
+    Teams are important, but they are not the centre of the universe. Frameworks place teams at the centre.
+    Ecosystems place <strong>the whole</strong> at the centre. Teams function within the ecosystem — not above it.
+  </p>
+
+  <h3>1. Teams must be stable, not just fast</h3>
+  <p>Speed without stability leads to:</p>
+  <ul>
+    <li>technical debt</li>
+    <li>inconsistency</li>
+    <li>architectural breaks</li>
+    <li>unpredictable risks</li>
+  </ul>
+  <p>An ecosystem ensures that teams:</p>
+  <ul>
+    <li>work stably</li>
+    <li>remain coherent</li>
+    <li>act reproducibly</li>
+    <li>function drift‑safe</li>
+  </ul>
+
+  <h3>2. Teams must be coherent, not isolated</h3>
+  <p>Team isolation creates:</p>
+  <ul>
+    <li>silos</li>
+    <li>dependency breaks</li>
+    <li>inconsistency</li>
+    <li>duplication of work</li>
+  </ul>
+  <p>Ecosystems connect teams through:</p>
+  <ul>
+    <li>domains</li>
+    <li>axes</li>
+    <li>governance</li>
+    <li>reproducible modules</li>
+  </ul>
+  <p>Teams do not become islands — they become ecosystemic nodes.</p>
+
+  <h3>3. Teams must be reproducible, not dependent on individuals</h3>
+  <p>
+    Individual knowledge is fleeting. Reproducible structures are sustainable. An ecosystem ensures that:
+  </p>
+  <ul>
+    <li>knowledge does not disappear</li>
+    <li>processes remain consistent</li>
+    <li>architecture is not dependent on people</li>
+    <li>teams can change without chaos</li>
+  </ul>
+
+  <h3>4. Teams are strengthened by the ecosystem</h3>
+  <p>The ecosystem:</p>
+  <ul>
+    <li>removes complexity</li>
+    <li>protects against drift</li>
+    <li>stabilises dependencies</li>
+    <li>makes work predictable</li>
+  </ul>
+  <p>Teams become calmer, more efficient, more consistent and safer.</p>
+</section>
+
+<!-- Page 15 — Governance without bureaucracy -->
+<section class="section" id="page-15">
+  <div class="section-header">
+    <div class="section-title">Governance without bureaucracy</div>
+    <div class="section-tag">Page 15</div>
+  </div>
+  <p>
+    Governance is often seen as slow, bureaucratic, suffocating and administrative. But ecosystemic governance is the
+    opposite.
+  </p>
+  <p>
+    MIKE‑CORE uses <strong>lightweight governance</strong> that:
+  </p>
+  <ul>
+    <li>creates stability</li>
+    <li>safeguards coherence</li>
+    <li>prevents drift</li>
+    <li>manages dependencies</li>
+  </ul>
+  <p>Without slowing teams down.</p>
+
+  <h3>1. Governance is a safety net, not a brake</h3>
+  <p>Ecosystemic governance:</p>
+  <ul>
+    <li>prevents mistakes</li>
+    <li>protects architecture</li>
+    <li>monitors consistency</li>
+    <li>makes audits simple</li>
+  </ul>
+  <p>It is a <strong>protective layer</strong>, not an obstacle.</p>
+
+  <h3>2. Governance is minimal, but indestructible</h3>
+  <p>MIKE‑CORE works with:</p>
+  <ul>
+    <li>minimal rules</li>
+    <li>maximum stability</li>
+    <li>clear ecosystemic principles</li>
+    <li>reproducible structures</li>
+  </ul>
+  <p>No unnecessary paperwork, no unnecessary processes.</p>
+
+  <h3>3. Governance is ecosystemic, not hierarchical</h3>
+  <p>The ecosystem:</p>
+  <ul>
+    <li>steers itself</li>
+    <li>monitors itself</li>
+    <li>corrects itself</li>
+  </ul>
+  <p>
+    Teams are not micromanaged — the ecosystem <strong>guarantees</strong> stability.
+  </p>
+
+  <h3>4. Governance makes innovation safer</h3>
+  <p>Innovation without stability is chaos. Innovation within an ecosystem is:</p>
+  <ul>
+    <li>controlled</li>
+    <li>safe</li>
+    <li>reproducible</li>
+    <li>scalable</li>
+  </ul>
+  <p>Governance is not a limitation, but an <strong>accelerator of innovation</strong>.</p>
+</section>
+
+<!-- Page 16 — Ecosystemic security & audits -->
+<section class="section" id="page-16">
+  <div class="section-header">
+    <div class="section-title">Ecosystemic Security & Audits</div>
+    <div class="section-tag">Page 16</div>
+  </div>
+  <p>
+    In modern IT environments, security is no longer an optional layer, but a structural requirement. Audits are no
+    longer administrative checks, but <strong>legal realities</strong>. Frameworks offer no solution here — ecosystems
+    do.
+  </p>
+  <p>
+    MIKE‑CORE approaches security and audits not as separate processes, but as <strong>ecosystemic properties</strong>.
+  </p>
+
+  <h3>1. Security as an architectural property</h3>
+  <p>In an ecosystem, security is:</p>
+  <ul>
+    <li>built‑in</li>
+    <li>reproducible</li>
+    <li>consistent</li>
+    <li>cross‑domain</li>
+    <li>drift‑safe</li>
+  </ul>
+  <p>
+    Security is not a tool, not a process and not a team. It is a <strong>fundamental property</strong> of the
+    ecosystem.
+  </p>
+
+  <h3>2. Audits become predictable</h3>
+  <p>Audits fail when:</p>
+  <ul>
+    <li>documentation is missing</li>
+    <li>dependencies are unclear</li>
+    <li>processes are inconsistent</li>
+    <li>teams improvise</li>
+    <li>architecture is not reproducible</li>
+  </ul>
+  <p>MIKE‑CORE solves this through:</p>
+  <ul>
+    <li>reproducible structures</li>
+    <li>coherent domains</li>
+    <li>ecosystemic governance</li>
+    <li>drift control</li>
+    <li>consistent architecture</li>
+  </ul>
+  <p>Audits become predictable, stress‑free, transparent and legally safe.</p>
+
+  <h3>3. Ecosystemic security protects against human variation</h3>
+  <p>Human variation is inevitable. Ecosystemic security ensures that:</p>
+  <ul>
+    <li>errors are caught</li>
+    <li>deviations are detected</li>
+    <li>risks are limited</li>
+    <li>systems remain stable</li>
+  </ul>
+  <p>Security is not a brake — it is a <strong>protective layer</strong>.</p>
+</section>
+
+<!-- Page 17 — Application Examples -->
+<section class="section" id="page-17">
+  <div class="section-header">
+    <div class="section-title">Application Examples (public version)</div>
+    <div class="section-tag">Page 17</div>
+  </div>
+  <p>
+    MIKE‑CORE is designed to operate in any complex IT environment. Below are several <strong>public</strong>
+    examples (without internal details).
+  </p>
+
+  <h3>1. Enterprise environments</h3>
+  <p>
+    Large organisations have:
+  </p>
+  <ul>
+    <li>many teams</li>
+    <li>many dependencies</li>
+    <li>much legacy</li>
+    <li>many risks</li>
+  </ul>
+  <p>
+    MIKE‑CORE:
+  </p>
+  <ul>
+    <li>stabilises domains</li>
+    <li>manages dependencies</li>
+    <li>prevents drift</li>
+    <li>makes audits predictable</li>
+  </ul>
+
+  <h3>2. Government institutions</h3>
+  <p>
+    Governments have:
+  </p>
+  <ul>
+    <li>strict regulations</li>
+    <li>high audit pressure</li>
+    <li>complex processes</li>
+    <li>critical infrastructure</li>
+  </ul>
+  <p>
+    MIKE‑CORE:
+  </p>
+  <ul>
+    <li>creates reproducibility</li>
+    <li>guarantees consistency</li>
+    <li>protects against drift</li>
+    <li>makes compliance easier</li>
+  </ul>
+
+  <h3>3. Cloud environments</h3>
+  <p>
+    Cloud architectures are:
+  </p>
+  <ul>
+    <li>dynamic</li>
+    <li>distributed</li>
+    <li>dependency‑rich</li>
+  </ul>
+  <p>
+    MIKE‑CORE:
+  </p>
+  <ul>
+    <li>stabilises cloud flows</li>
+    <li>monitors coherence</li>
+    <li>manages transitions</li>
+    <li>prevents architectural breaks</li>
+  </ul>
+
+  <h3>4. Infrastructure & networks</h3>
+  <p>
+    Infra teams work with:
+  </p>
+  <ul>
+    <li>high risks</li>
+    <li>strict SLAs</li>
+    <li>complex dependencies</li>
+  </ul>
+  <p>
+    MIKE‑CORE:
+  </p>
+  <ul>
+    <li>makes infrastructure reproducible</li>
+    <li>monitors stability</li>
+    <li>detects drift</li>
+    <li>protects critical systems</li>
+  </ul>
+
+  <h3>5. Software development</h3>
+  <p>
+    Development teams have:
+  </p>
+  <ul>
+    <li>variable speed</li>
+    <li>changing context</li>
+    <li>dependencies between components</li>
+  </ul>
+  <p>
+    MIKE‑CORE:
+  </p>
+  <ul>
+    <li>stabilises development processes</li>
+    <li>makes architecture consistent</li>
+    <li>prevents technical debt</li>
+    <li>protects against chaotic growth</li>
+  </ul>
+</section>
+
+<!-- Page 18 — What this guide deliberately does not include -->
+<section class="section" id="page-18">
+  <div class="section-header">
+    <div class="section-title">What this guide deliberately does not include</div>
+    <div class="section-tag">Page 18</div>
+  </div>
+  <p>
+    This public edition is designed to:
+  </p>
+  <ul>
+    <li>inform</li>
+    <li>inspire</li>
+    <li>introduce</li>
+  </ul>
+  <p>
+    But not to:
+  </p>
+  <ul>
+    <li>reveal the core</li>
+    <li>unveil the blueprint</li>
+    <li>show the validation chains</li>
+    <li>publish the domain architecture</li>
+    <li>expose the ecosystemic nerve paths</li>
+  </ul>
+  <p>
+    Therefore, this guide deliberately does <strong>not</strong> include:
+  </p>
+  <ul>
+    <li>TRIAD core</li>
+    <li>Blueprint architecture</li>
+    <li>Validation chains 1A–1J</li>
+    <li>Domain interconnections</li>
+    <li>Ecosystemic nerve paths</li>
+    <li>Internal modules</li>
+    <li>Operational instructions</li>
+    <li>Implementation details</li>
+  </ul>
+  <p>
+    These elements remain exclusive to the closed ecosystem.
+  </p>
+</section>
+
+<!-- Page 19 — License & usage -->
+<section class="section" id="page-19">
+  <div class="section-header">
+    <div class="section-title">License & usage</div>
+    <div class="section-tag">Page 19</div>
+  </div>
+  <p>
+    This publication is a <strong>public introduction</strong> to the MIKE‑CORE ecosystem. It is intended to provide
+    insight into the philosophy, principles and high‑level structure of ecosystemic IT architecture, without revealing
+    the core, blueprint or internal validation chains.
+  </p>
+  <p>This guide may be:</p>
+  <ul>
+    <li><strong>Shared</strong> with colleagues, organisations, partners or interested parties</li>
+    <li><strong>Cited</strong> in presentations, training, documentation or publications</li>
+    <li><strong>Published</strong> on websites, intranets or knowledge platforms</li>
+    <li><strong>Used for education</strong> in training, workshops or architectural programmes</li>
+  </ul>
+
+  <h3>Conditions</h3>
+  <p>This publication may be used under the following conditions:</p>
+  <ul>
+    <li>
+      <strong>The content may not be modified</strong> — the text must remain intact as published in this public edition.
+    </li>
+    <li>
+      <strong>MIKE‑CORE must be credited as the source</strong> in any form of publication or reuse.
+    </li>
+    <li>
+      <strong>The core, blueprint and internal architecture may not be reconstructed</strong> — any attempt to reverse‑engineer
+      the TRIAD core, ecosystemic nerve paths, validation chains, domain architecture or internal modules is prohibited.
+    </li>
+    <li>
+      <strong>Commercial implementations require permission</strong> — this public edition is free to share, but commercial
+      implementations of MIKE‑CORE require a formal agreement.
+    </li>
+  </ul>
+
+  <h3>Copyright</h3>
+  <p>
+    © 2026 MIKE‑CORE — All Rights Reserved<br />
+    Public Ecosystem Guide v1.0<br />
+    This publication may be freely distributed under the conditions above.
+  </p>
+</section>
+
+<!-- Page 20 — Closing Note -->
+<section class="section" id="page-20">
+  <div class="section-header">
+    <div class="section-title">Closing Note</div>
+    <div class="section-tag">Page 20</div>
+  </div>
+  <p>
+    The IT world is at a tipping point. Frameworks have proven their value, but they are not designed for the scale,
+    complexity and dependencies of modern organisations. The future requires a different way of thinking — one that goes
+    beyond teams, processes and rhythm.
+  </p>
+  <p><strong>Ecosystemic thinking</strong> is that next step.</p>
+  <p>
+    MIKE‑CORE is built to:
+  </p>
+  <ul>
+    <li>bring stability where chaos emerges</li>
+    <li>create coherence where fragmentation appears</li>
+    <li>guarantee reproducibility where improvisation dominates</li>
+    <li>prevent drift where systems deviate spontaneously</li>
+    <li>control dependencies where frameworks fall short</li>
+  </ul>
+  <p>
+    This guide is only the <strong>public top layer</strong> of a much deeper, more powerful and future‑proof ecosystem.
+    The core remains closed — not to hide, but to protect what makes the ecosystem unique.
+  </p>
+  <p>
+    The future of IT is not Agile. Not DevOps. Not SAFe. Not ITIL.<br />
+    The future of IT is <strong>ecosystemic</strong>.
+  </p>
+  <p>
+    And this document is your first step in that direction.
+  </p>
+  <p><strong>Thank you for reading. Welcome to the world of MIKE‑CORE.</strong></p>
+</section>
+
+<div class="footer-note">
+  MIKE‑CORE Public Ecosystem Guide v1.0 — HTML view for web publication.
+</div>

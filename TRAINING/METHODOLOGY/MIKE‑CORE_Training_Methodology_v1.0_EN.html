@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE Training Methodology — Public Edition v1.0 (EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main:#050814;
+      --bg-panel:#0b1020;
+      --bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;
+      --accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;
+      --accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;
+      --text-soft:#b5c0d4;
+      --text-muted:#7b8496;
+      --border-soft:#1b2235;
+      --shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;
+      --radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --font-mono:"Cascadia Code","Fira Code",monospace;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      font-family:var(--font-main);
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .back-btn {
+      padding:10px 22px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--accent-blue);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+      box-shadow:0 0 14px rgba(58,169,255,0.25);
+    }
+
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      color:var(--text-main);
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(58,169,255,0.45);
+    }
+
+    /* GLASS PANEL */
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    /* HERO */
+    header.hero {
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:20px;
+      margin-bottom:32px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .hero-kicker-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {
+      font-size:32px;
+      margin:14px 0 4px;
+      text-transform:uppercase;
+      color:var(--accent-blue);
+    }
+
+    .hero-subtitle {
+      font-size:16px;
+      color:var(--text-soft);
+      max-width:720px;
+    }
+
+    .hero-meta {
+      margin-top:10px;
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      color:var(--accent-silver);
+      margin-bottom:10px;
+    }
+
+    /* GRID */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:16px;
+      margin-top:10px;
+    }
+
+    .card {
+      background:radial-gradient(circle at top,rgba(58,169,255,0.12),transparent 60%),
+                  rgba(8,12,26,0.96);
+      border-radius:14px;
+      border:1px solid rgba(58,169,255,0.25);
+      padding:14px 14px 16px;
+    }
+
+    .card-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--accent-silver-soft);
+      margin-bottom:4px;
+    }
+
+    .card-title {
+      font-size:15px;
+      color:var(--accent-blue);
+      margin-bottom:6px;
+    }
+
+    .card p {
+      font-size:13px;
+      color:var(--text-soft);
+      margin:0;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      margin-top:10px;
+      border-left:1px solid rgba(58,169,255,0.4);
+      padding-left:14px;
+    }
+
+    .timeline-step {
+      margin-bottom:10px;
+      position:relative;
+    }
+
+    .timeline-step::before {
+      content:"";
+      position:absolute;
+      left:-8px;
+      top:4px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 8px rgba(58,169,255,0.8);
+    }
+
+    .timeline-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size:14px;
+      color:var(--accent-blue);
+    }
+
+    /* FOOTER */
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <!-- NAVIGATION -->
+    <div class="back-nav">
+      <a href="index_en.html" class="back-btn">⟵ Training Methodology Index</a>
+    </div>
+
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Training Methodology</h1>
+        <p class="hero-subtitle">
+          The public MIKE‑CORE training method: reproducible steps, ecosystemic thinking and stability as the foundation for growth — regardless of background, level or starting position.
+        </p>
+        <div class="hero-meta">
+          This page describes the public training approach. Internal methodologies, validation chains and domain structures remain protected.
+        </div>
+      </header>
+
+      <!-- Why this methodology exists -->
+      <section class="section">
+        <div class="section-title">Why this methodology exists</div>
+        <p>
+          Training within MIKE‑CORE is not a classic education model. It is an ecosystemic approach that protects people from chaos, pressure and uncertainty. The methodology is designed to build stability — not just knowledge.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Focus</div>
+            <div class="card-title">Stability over knowledge</div>
+            <p>
+              Knowledge without stability breaks people. MIKE‑CORE begins with structure, language and reproducible steps.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Goal</div>
+            <div class="card-title">Anyone can start</div>
+            <p>
+              The method works for youth, professionals and vulnerable groups — without diploma barriers.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Approach</div>
+            <div class="card-title">Ecosystemic learning</div>
+            <p>
+              Problems are not viewed in isolation but in full context: person, process, hardware and environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The 4 building blocks -->
+      <section class="section">
+        <div class="section-title">The 4 building blocks of MIKE‑CORE training</div>
+        <p>
+          The training method consists of four reproducible building blocks that can be applied in any context.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Block 1</div>
+            <div class="card-title">Language & Understanding</div>
+            <p>
+              Participants receive a shared vocabulary: stability, drift, ecosystemic pressure, reproducibility.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Block 2</div>
+            <div class="card-title">Structure & Safety</div>
+            <p>
+              A stable environment where mistakes are not endpoints but signals in the system.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Block 3</div>
+            <div class="card-title">Practical steps</div>
+            <p>
+              Small, achievable assignments that are reproducible and build confidence.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Block 4</div>
+            <div class="card-title">Ecosystemic reflection</div>
+            <p>
+              Not “what did you do wrong?”, but “what in the system caused this behaviour?”.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The training cycle -->
+      <section class="section">
+        <div class="section-title">The MIKE‑CORE training cycle</div>
+        <p>
+          The training cycle is designed to start small and grow reproducibly.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Phase 1 — Foundation</div>
+            <div class="timeline-title">Language & stability</div>
+            <p>
+              Participants learn the basic concepts and receive a stable environment to begin.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Phase 2 — Application</div>
+            <div class="timeline-title">Small assignments</div>
+            <p>
+              Practical exercises around hardware, ecosystemic thinking and reproducible steps.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Phase 3 — Reflection</div>
+            <div class="timeline-title">Ecosystemic analysis</div>
+            <p>
+              Participants learn to look at context, pressure, expectations and system faults.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Phase 4 — Growth</div>
+            <div class="timeline-title">Scaling what works</div>
+            <p>
+              What works is captured and repeated. Participants grow through stability, not pressure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Public Layer v1.0<br>
+        This page describes only the public training methodology. Internal structures remain protected.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

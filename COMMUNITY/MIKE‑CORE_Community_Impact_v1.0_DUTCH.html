@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE Community Impact — Public Edition v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Fira Code", monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+        rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 720px;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(58, 169, 255, 0.12), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      padding: 14px 14px 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-left: 1px solid rgba(58, 169, 255, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-step {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 8px rgba(58, 169, 255, 0.8);
+    }
+
+    .timeline-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      color: var(--accent-blue);
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Community Impact</h1>
+        <p class="hero-subtitle">
+          Hoe MIKE‑CORE ecosystemische waarde creëert voor jongeren, organisaties, lokale initiatieven en kwetsbare groepen —
+          door stabiliteit, anti‑wegwerpdenken en sociale-technische groei te combineren.
+        </p>
+        <div class="hero-meta">
+          Deze pagina beschrijft enkel de publieke impactlaag.
+        </div>
+      </header>
+
+      <!-- Waarom community impact -->
+      <section class="section">
+        <div class="section-title">Waarom Community Impact?</div>
+        <p>
+          MIKE‑CORE is geen theoretisch framework. Het is een ecosysteem dat tastbare impact creëert in echte omgevingen:
+          scholen, buurten, organisaties, jeugdwerkingen en sociale projecten. Impact ontstaat wanneer stabiliteit, structuur
+          en anti‑wegwerpdenken samenkomen.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Impact 1</div>
+            <div class="card-title">Digitale Inclusie</div>
+            <p>
+              Toegang tot technologie, begeleiding en ecosystemische stabiliteit voor wie anders uitvalt.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Impact 2</div>
+            <div class="card-title">Anti‑Waste Cultuur</div>
+            <p>
+              Hardware redden, herstellen en hergebruiken — met jongeren, vrijwilligers en lokale partners.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Impact 3</div>
+            <div class="card-title">Ecosystemische Groei</div>
+            <p>
+              Kleine projecten worden reproduceerbare modellen die in andere contexten opnieuw werken.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voorbeelden van impact -->
+      <section class="section">
+        <div class="section-title">Voorbeelden van Impact</div>
+        <p>
+          MIKE‑CORE creëert impact door kleine, haalbare ecosystemische interventies die later kunnen opschalen.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Project 1</div>
+            <div class="card-title">Hardware‑Redding</div>
+            <p>
+              Jongeren leren hardware herstellen, testen en documenteren. Minder afval, meer vaardigheden.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Project 2</div>
+            <div class="card-title">Digitale Basisvaardigheden</div>
+            <p>
+              Workshops voor kwetsbare groepen: veilig internet, e‑mail, documenten, digitale identiteit.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Project 3</div>
+            <div class="card-title">Ecosystemische Coaching</div>
+            <p>
+              Professionals leren drift herkennen, ruis verminderen en stabieler werken.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Samenwerkingen -->
+      <section class="section">
+        <div class="section-title">Samenwerkingen</div>
+        <p>
+          MIKE‑CORE werkt samen met scholen, jeugdwerkingen, lokale besturen, sociale organisaties en vrijwilligers.
+          Elke samenwerking vertrekt vanuit stabiliteit, reproduceerbaarheid en respect voor kwetsbare groepen.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Partner 1</div>
+            <div class="card-title">Scholen</div>
+            <p>
+              Ecosystemische projecten in klassen, technische opleidingen en naschoolse trajecten.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Partner 2</div>
+            <div class="card-title">Jeugdwerkingen</div>
+            <p>
+              Jongeren krijgen structuur, begeleiding en toegang tot technologie.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Partner 3</div>
+            <div class="card-title">Sociale organisaties</div>
+            <p>
+              Inclusieprojecten, hardware‑redding en ecosystemische begeleiding.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Roadmap -->
+      <section class="section">
+        <div class="section-title">Impact Roadmap</div>
+        <p>
+          Community Impact binnen MIKE‑CORE groeit via een reproduceerbare cyclus.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 1 — Detectie</div>
+            <div class="timeline-title">Noden zichtbaar maken</div>
+            <p>
+              Waar ontbreekt stabiliteit? Waar is er digitale uitsluiting? Waar ontstaat wegwerpdenken?
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 2 — Interventie</div>
+            <div class="timeline-title">Kleine ecosystemische acties</div>
+            <p>
+              Hardware redden, workshops geven, coaching, diagnose‑structuren introduceren.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 3 — Reproduceerbaarheid</div>
+            <div class="timeline-title">Documenteren & herhalen</div>
+            <p>
+              Wat werkt, wordt vastgelegd en opnieuw toegepast in andere contexten.
+            </p>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Stap 4 — Opschaling</div>
+            <div class="timeline-title">Grotere projecten</div>
+            <p>
+              Samenwerkingen uitbreiden, nieuwe doelgroepen bereiken, ecosystemische groei realiseren.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Public Layer v1.0  
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

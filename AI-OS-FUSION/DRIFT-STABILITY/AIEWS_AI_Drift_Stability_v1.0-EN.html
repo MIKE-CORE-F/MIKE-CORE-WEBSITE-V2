@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI‑OS‑FUSION • Drift & Stability (EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
+    }
+
+    .page-wrap {max-width:1600px;margin:0 auto;padding:40px 16px 80px;}
+
+    /* BACK NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;gap:12px;justify-content:center;
+    }
+    .back-btn {
+      padding:10px 20px;border-radius:10px;
+      background:var(--bg-panel-soft);border:1px solid var(--border-soft);
+      color:var(--text-main);text-decoration:none;font-size:14px;
+      transition:0.15s ease;
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      transform:translateY(-2px);
+    }
+
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;position:relative;overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";position:absolute;inset:-40%;
+      background:radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;pointer-events:none;z-index:-1;
+    }
+
+    header.hero {
+      text-align:left;margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);padding-bottom:20px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;color:var(--accent-blue);}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:640px;}
+
+    .section {
+      margin-top:32px;padding:20px 18px 22px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--accent-silver);margin-bottom:10px;
+    }
+
+    p,ul,li {font-size:14px;color:var(--text-soft);}
+    ul {margin-left:18px;}
+
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+<!-- ✔ CORRECTED NAVIGATION -->
+<div class="back-nav">
+  <a href="../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  <a href="../index.html" class="back-btn">⟵ AI‑OS‑FUSION Subsystem</a>
+</div>
+
+<div class="glass-panel">
+
+<header class="hero">
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span>AI‑OS‑FUSION • MODULE</span>
+  </div>
+
+  <h1 class="hero-title">Drift & Stability</h1>
+
+  <p class="hero-subtitle">
+    Drift & Stability within AI‑OS‑FUSION describes how the system detects deviations,
+    maintains stability, and prevents AI modules from evolving outside their ecosystem boundaries.
+    The goal is to ensure predictability, safety, and reproducibility.
+  </p>
+</header>
+
+<section class="section">
+  <div class="section-title">What Is AI Drift?</div>
+  <p>
+    AI Drift occurs when a system deviates from its original context, objectives, or doctrine.
+    This may happen due to:
+  </p>
+  <ul>
+    <li>misinterpretation of data</li>
+    <li>accumulation of small deviations</li>
+    <li>incorrect feedback loops</li>
+    <li>unconscious human input</li>
+    <li>incorrect coupling between modules</li>
+  </ul>
+</section>
+
+<section class="section">
+  <div class="section-title">How AI‑OS‑FUSION Detects Drift</div>
+  <p>
+    AI‑OS‑FUSION uses context layers, validation points, and ecosystem boundaries to detect deviations immediately.
+    The system continuously compares:
+  </p>
+  <ul>
+    <li>current context vs. original context</li>
+    <li>objectives vs. output</li>
+    <li>module behaviour vs. doctrine</li>
+    <li>human input vs. system response</li>
+  </ul>
+</section>
+
+<section class="section">
+  <div class="section-title">Stability Within MIKE‑CORE</div>
+  <p>
+    Stability ensures the ecosystem remains predictable, safe, and reproducible.  
+    AI‑OS‑FUSION monitors:
+  </p>
+  <ul>
+    <li>ecosystem boundaries</li>
+    <li>module interactions</li>
+    <li>drift‑sensitive zones</li>
+    <li>audit trails</li>
+    <li>human intervention points</li>
+  </ul>
+</section>
+
+<section class="section">
+  <div class="section-title">Why Drift & Stability Are Essential</div>
+  <p>
+    Without drift control, chaos emerges.  
+    Without stability, an IT ecosystem eventually collapses.  
+    AI‑OS‑FUSION prevents both by continuously monitoring, correcting, and protecting.
+  </p>
+</section>
+
+<section class="section">
+  <div class="section-title">Available Documents</div>
+  <ul>
+    <li>Drift & Stability — Dutch Edition</li>
+    <li>Drift & Stability — English Edition</li>
+  </ul>
+</section>
+
+<div class="footer-note">
+  © 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved
+</div>
+
+</div>
+</div>
+</body>
+</html>

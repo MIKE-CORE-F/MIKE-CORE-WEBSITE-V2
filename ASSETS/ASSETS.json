@@ -1,0 +1,102 @@
+{
+    "root": "C:\\Users\\Gebruiker\\Desktop\\MC_ECOSYS\\12_MC_PUBLIC_WEBSITE\\ASSETS",
+    "total_folders": 10,
+    "total_files": 28,
+    "tree": {
+        "ROOT": {
+            "folders": [
+                "CSS",
+                "FONTS",
+                "IMAGES",
+                "JS"
+            ],
+            "files": [
+                "index.html"
+            ]
+        },
+        "CSS": {
+            "folders": [],
+            "files": [
+                "index.html",
+                "index_en.html",
+                "main.css",
+                "theme.css"
+            ]
+        },
+        "FONTS": {
+            "folders": [],
+            "files": [
+                "index.html",
+                "index_en.html"
+            ]
+        },
+        "IMAGES": {
+            "folders": [
+                "AIEWS_VISUALS",
+                "BACKGROUNDS",
+                "ICONS",
+                "LOGOS",
+                "MIKECORE_VISUALS",
+                "TRIAD_VISUALS"
+            ],
+            "files": [
+                "index.html"
+            ]
+        },
+        "IMAGES\\AIEWS_VISUALS": {
+            "folders": [],
+            "files": [
+                "index.html"
+            ]
+        },
+        "IMAGES\\BACKGROUNDS": {
+            "folders": [],
+            "files": [
+                "AIEWS Neon Background.png",
+                "ecosystem_core_background.png",
+                "FUSION Neon Background.png",
+                "index.html",
+                "MIKE-CORE Neon Background.png",
+                "TRIAD Neon Background.png"
+            ]
+        },
+        "IMAGES\\ICONS": {
+            "folders": [],
+            "files": [
+                "index.html"
+            ]
+        },
+        "IMAGES\\LOGOS": {
+            "folders": [],
+            "files": [
+                "index.html",
+                "mikecore_logo.png",
+                "mikecore_logo_transparent.png"
+            ]
+        },
+        "IMAGES\\MIKECORE_VISUALS": {
+            "folders": [],
+            "files": [
+                "index.html",
+                "MIKE-CORE_VISUALS_diagram.png",
+                "MIKE-CORE_VISUALS_Domeinen.png",
+                "MIKE-CORE_VISUALS_drift.png",
+                "MIKE-CORE_VISUALS_ecosystem.png",
+                "MIKE-CORE_VISUALS_Security.png"
+            ]
+        },
+        "IMAGES\\TRIAD_VISUALS": {
+            "folders": [],
+            "files": [
+                "index.html"
+            ]
+        },
+        "JS": {
+            "folders": [],
+            "files": [
+                "index.html",
+                "main.js"
+            ]
+        }
+    }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE • TRIAD 3‑Layer Map (NL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Mike Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AIEWS — All Rights Reserved" />
+
+  <style>
+    :root {
+      --bg-main:#050814;
+      --bg-panel:#0b1020;
+      --accent-blue:#3aa9ff;
+      --accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;
+      --text-main:#e5ecf7;
+      --text-soft:#b5c0d4;
+      --border-soft:#1b2235;
+      --shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;
+      --radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);
+      font-family:var(--font-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* NAVIGATION (same style as Training Examples NL) */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      justify-content:center;
+    }
+    .back-btn {
+      padding:10px 22px;
+      border-radius:10px;
+      background:var(--bg-panel);
+      border:1px solid var(--border-soft);
+      color:var(--accent-blue);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+      box-shadow:0 0 14px rgba(58,169,255,0.25);
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      color:var(--text-main);
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(58,169,255,0.45);
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    header.hero {
+      text-align:left;
+      margin-bottom:24px;
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:16px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .hero-kicker-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {
+      font-size:28px;
+      margin:14px 0 4px;
+      text-transform:uppercase;
+    }
+
+    .hero-subtitle {
+      font-size:14px;
+      color:var(--text-soft);
+      max-width:640px;
+    }
+
+    .footer-note {
+      margin-top:18px;
+      font-size:11px;
+      color:#7b8496;
+      text-align:right;
+    }
+
+    svg text {
+      font-family:var(--font-main);
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- NAVIGATION BAR (NL VERSION) -->
+  <div class="back-nav">
+    <a href="index.html" class="back-btn">⟵ TRIAD Index</a>
+  </div>
+
+  <div class="glass-panel">
+
+<header class="hero">
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span>MIKE‑CORE • VISUELE KAART</span>
+  </div>
+  <h1 class="hero-title">TRIAD • 3‑Layer Map</h1>
+  <p class="hero-subtitle">
+    Visuele kaart van de drie structurele lagen van TRIAD (Kern, Operationeel, Ecosysteem) en de I‑R‑T‑assen.
+  </p>
+</header>
+
+<!-- ORIGINAL SVG (unchanged) -->
+<svg viewBox="0 0 900 520" width="100%" height="auto">
+  <defs>
+    <linearGradient id="layerGradNL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3aa9ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Axis labels -->
+  <text x="40" y="120" fill="#cfd8e3" font-size="13" font-weight="600">I‑AS</text>
+  <text x="40" y="260" fill="#cfd8e3" font-size="13" font-weight="600">R‑AS</text>
+  <text x="40" y="400" fill="#cfd8e3" font-size="13" font-weight="600">T‑AS</text>
+
+  <!-- Horizontal lines -->
+  <line x1="90" y1="115" x2="860" y2="115" stroke="#1b2235" stroke-width="1"/>
+  <line x1="90" y1="255" x2="860" y2="255" stroke="#1b2235" stroke-width="1"/>
+  <line x1="90" y1="395" x2="860" y2="395" stroke="#1b2235" stroke-width="1"/>
+
+  <!-- Layer titles -->
+  <text x="210" y="70" fill="#cfd8e3" font-size="13" font-weight="600">KERNLAAG</text>
+  <text x="430" y="70" fill="#cfd8e3" font-size="13" font-weight="600">OPERATIONELE LAAG</text>
+  <text x="680" y="70" fill="#cfd8e3" font-size="13" font-weight="600">ECOSYSTEEMLAAG</text>
+
+  <!-- Vertical separators -->
+  <line x1="320" y1="90" x2="320" y2="440" stroke="#1b2235" stroke-width="1"/>
+  <line x1="560" y1="90" x2="560" y2="440" stroke="#1b2235" stroke-width="1"/>
+
+  <!-- Core layer blocks -->
+  <rect x="140" y="95" width="160" height="60" rx="10" fill="url(#layerGradNL)" stroke="#3aa9ff" stroke-width="1.2"/>
+  <text x="220" y="120" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">I: INFORMATIEGRENZEN</text>
+  <text x="220" y="136" text-anchor="middle" fill="#b5c0d4" font-size="11">Helderheid, scope, ruisfilter</text>
+
+  <rect x="140" y="235" width="160" height="60" rx="10" fill="url(#layerGradNL)" stroke="#3aa9ff" stroke-width="1.2"/>
+  <text x="220" y="260" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">R: STABILITEITSREGELS</text>
+  <text x="220" y="276" text-anchor="middle" fill="#b5c0d4" font-size="11">Risico, validatie, grenzen</text>
+
+  <rect x="140" y="375" width="160" height="60" rx="10" fill="url(#layerGradNL)" stroke="#3aa9ff" stroke-width="1.2"/>
+  <text x="220" y="400" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">T: TRANSFORMATIELIMITEN</text>
+  <text x="220" y="416" text-anchor="middle" fill="#b5c0d4" font-size="11">Wat mag veranderen, wat nooit</text>
+
+  <!-- Operational layer blocks -->
+  <rect x="360" y="95" width="170" height="60" rx="10" fill="#0b1020" stroke="#2a7ac4" stroke-width="1.1"/>
+  <text x="445" y="120" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">I IN OPERATIES</text>
+  <text x="445" y="136" text-anchor="middle" fill="#b5c0d4" font-size="11">Teams, overdracht, documentatie</text>
+
+  <rect x="360" y="235" width="170" height="60" rx="10" fill="#0b1020" stroke="#2a7ac4" stroke-width="1.1"/>
+  <text x="445" y="260" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">R IN OPERATIES</text>
+  <text x="445" y="276" text-anchor="middle" fill="#b5c0d4" font-size="11">Incidenten, controles, monitoring</text>
+
+  <rect x="360" y="375" width="170" height="60" rx="10" fill="#0b1020" stroke="#2a7ac4" stroke-width="1.1"/>
+  <text x="445" y="400" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">T IN OPERATIES</text>
+  <text x="445" y="416" text-anchor="middle" fill="#b5c0d4" font-size="11">Wijzigingen, releases, migraties</text>
+
+  <!-- Ecosystem layer blocks -->
+  <rect x="610" y="95" width="200" height="60" rx="10" fill="#050814" stroke="#3aa9ff" stroke-width="1.1"/>
+  <text x="710" y="120" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">I IN HET ECOSYSTEEM</text>
+  <text x="710" y="136" text-anchor="middle" fill="#b5c0d4" font-size="11">Domeinoverschrijdende informatiestromen</text>
+
+  <rect x="610" y="235" width="200" height="60" rx="10" fill="#050814" stroke="#3aa9ff" stroke-width="1.1"/>
+  <text x="710" y="260" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">R IN HET ECOSYSTEEM</text>
+  <text x="710" y="276" text-anchor="middle" fill="#b5c0d4" font-size="11">Globale stabiliteit & risicogebieden</text>
+
+  <rect x="610" y="375" width="200" height="60" rx="10" fill="#050814" stroke="#3aa9ff" stroke-width="1.1"/>
+  <text x="710" y="400" text-anchor="middle" fill="#e5ecf7" font-size="12" font-weight="600">T IN HET ECOSYSTEEM</text>
+  <text x="710" y="416" text-anchor="middle" fill="#b5c0d4" font-size="11">Ecosysteem‑veilige transformatie</text>
+
+  <!-- Legend -->
+  <rect x="90" y="450" width="14" height="14" rx="3" fill="url(#layerGradNL)" stroke="#3aa9ff" stroke-width="1"/>
+  <text x="112" y="461" fill="#b5c0d4" font-size="11">TRIAD‑kernregels</text>
+
+  <rect x="240" y="450" width="14" height="14" rx="3" fill="#0b1020" stroke="#2a7ac4" stroke-width="1"/>
+  <text x="262" y="461" fill="#b5c0d4" font-size="11">Toepassing in operaties</text>
+
+  <rect x="420" y="450" width="14" height="14" rx="3" fill="#050814" stroke="#3aa9ff" stroke-width="1"/>
+  <text x="442" y="461" fill="#b5c0d4" font-size="11">Ecosysteemgovernance</text>
+</svg>
+
+<div class="footer-note">
+  © 2026 MIKE‑CORE / AIEWS — All Rights Reserved
+</div>
+
+  </div>
+</div>
+</body>
+</html>

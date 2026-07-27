@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Over MIKE‑CORE — Public Chapter v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Officiële publieke introductie tot het MIKE‑CORE ecosysteem: stabiliteit, coherentie en reproduceerbaarheid in moderne IT‑architectuur." />
+  <meta name="keywords" content="MIKE-CORE, IT ecosysteem, ecosystemische architectuur, reproduceerbaarheid, stabiliteit, coherentie, drift, afhankelijkheden" />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
+    }
+
+    .page-wrap {max-width:1100px;margin:0 auto;padding:40px 16px 80px;}
+
+    /* NAVIGATIEBALK */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;gap:12px;justify-content:center;
+    }
+    .back-btn {
+      padding:10px 20px;border-radius:10px;
+      background:var(--bg-panel-soft);border:1px solid var(--border-soft);
+      color:var(--text-main);text-decoration:none;font-size:14px;
+      transition:0.15s ease;
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      transform:translateY(-2px);
+    }
+
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;position:relative;overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";position:absolute;inset:-40%;
+      background:radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;pointer-events:none;z-index:-1;
+    }
+
+    header.hero {
+      text-align:left;margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);padding-bottom:20px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;color:var(--accent-blue);}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:640px;}
+
+    .hero-meta {
+      margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;
+      font-size:12px;color:var(--text-muted);
+    }
+    .hero-meta span {
+      padding:3px 10px;border-radius:var(--radius-chip);
+      border:1px solid rgba(154,164,181,0.4);background:rgba(11,16,32,0.8);
+    }
+
+    .section {
+      margin-top:32px;padding:20px 18px 22px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-header {
+      display:flex;align-items:baseline;justify-content:space-between;
+      gap:12px;margin-bottom:10px;
+    }
+
+    .section-title {
+      font-size:18px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--accent-silver);
+    }
+
+    .section-tag {
+      font-size:11px;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--accent-blue-soft);
+    }
+
+    h3 {font-size:16px;color:var(--accent-blue);}
+    h4 {font-size:14px;color:var(--accent-silver-soft);}
+    p,ul,li {font-size:14px;color:var(--text-soft);}
+    ul {margin-left:18px;}
+
+    .callout {
+      margin-top:10px;padding:10px 12px;border-radius:10px;
+      background:radial-gradient(circle at left,rgba(58,169,255,0.18),transparent 60%),
+                 rgba(8,12,26,0.96);
+      border:1px solid rgba(58,169,255,0.45);font-size:13px;color:var(--accent-silver);
+    }
+
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- ✔ Correcte navigatie -->
+  <div class="back-nav">
+    <a href="../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+    <a href="index.html" class="back-btn">⟵ ABOUT MIKE‑CORE</a>
+  </div>
+
+  <div class="glass-panel">
+
+    <!-- Pagina 1 — Cover -->
+    <header class="hero" id="page-1">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        <span>MIKE‑CORE ECOSYSTEM • PUBLIC CHAPTER</span>
+      </div>
+
+      <h1 class="hero-title">Over MIKE‑CORE</h1>
+
+      <p class="hero-subtitle">
+        Een diepgaande verkenning van het MIKE‑CORE ecosysteem: stabiliteit, coherentie en reproduceerbaarheid in moderne IT‑architectuur.
+        Dit hoofdstuk is een officiële public edition — volledig veilig, zonder kern of blueprint.
+      </p>
+
+      <div class="hero-meta">
+        <span>© 2026 MIKE‑CORE — All Rights Reserved</span>
+        <span>Public Chapter v1.0</span>
+        <span>Architect: MIKE Verhelst</span>
+      </div>
+    </header>
+
+    <!-- Pagina 2 — Voorwoord -->
+    <section class="section" id="page-2">
+      <div class="section-header">
+        <div class="section-title">Voorwoord</div>
+        <div class="section-tag">Pagina 2</div>
+      </div>
+
+      <p>
+        De moderne IT‑wereld evolueert sneller dan organisaties kunnen volgen. Systemen worden complexer,
+        afhankelijkheden groeien exponentieel en traditionele frameworks slagen er steeds minder in om stabiliteit te garanderen.
+        In deze realiteit ontstond <strong>MIKE‑CORE</strong> — niet als framework, maar als <strong>ecosysteem</strong>.
+      </p>
+
+      <p>
+        Dit hoofdstuk is geschreven voor iedereen die voelt dat IT niet langer gebaat is bij nóg een procesmodel,
+        nóg een ceremonie of nóg een maturity‑model. Het is bedoeld voor organisaties die begrijpen dat de echte problemen
+        liggen in <strong>ecosystemische instabiliteit</strong>.
+      </p>
+
+      <p>
+        Deze public edition onthult de filosofie, principes en high‑level structuur van MIKE‑CORE,
+        maar laat bewust alle kernmechanismen, blueprint‑architectuur en validatieketens gesloten.
+      </p>
+
+      <p>Wat je wél krijgt:</p>
+      <ul>
+        <li>de filosofische basis van ecosystemisch denken</li>
+        <li>de high‑level structuur van MIKE‑CORE</li>
+        <li>de rol van stabiliteit, coherentie en reproduceerbaarheid</li>
+        <li>hoe ecosystemen IT transformeren</li>
+      </ul>
+
+      <p>Wat je niet krijgt:</p>
+      <ul>
+        <li>interne domeinarchitectuur</li>
+        <li>validatieketens</li>
+        <li>TRIAD‑kernmechanismen</li>
+        <li>ecosystemische zenuwbanen</li>
+        <li>operationele implementatiedetails</li>
+      </ul>
+
+      <div class="callout">
+        MIKE‑CORE is geen methode.  
+        Het is een manier van kijken, denken en structureren — een ecosysteem dat stabiliteit mogelijk maakt.
+      </div>
+    </section>
+
+    <!-- Pagina 3 — De crisis van moderne IT -->
+    <section class="section" id="page-3">
+      <div class="section-header">
+        <div class="section-title">De crisis van moderne IT</div>
+        <div class="section-tag">Pagina 3</div>
+      </div>
+
+      <p>
+        De IT‑sector bevindt zich in een structurele crisis. Niet door technologie,
+        maar door <strong>onze manier van organiseren</strong> die niet langer aansluit bij moderne ecosystemen.
+      </p>
+
+      <h3>1. Complexiteit groeit sneller dan structuur</h3>
+      <p>Moderne IT‑omgevingen bestaan uit:</p>
+      <ul>
+        <li>microservices en cloud‑platformen</li>
+        <li>API‑ketens en gedistribueerde workloads</li>
+        <li>hybride infrastructuren en legacy‑systemen</li>
+      </ul>
+
+      <p>Maar structuren zijn vaak:</p>
+      <ul>
+        <li>ad‑hoc gegroeid</li>
+        <li>team‑gebaseerd i.p.v. ecosystemisch</li>
+        <li>afhankelijk van individueel geheugen</li>
+        <li>niet reproduceerbaar</li>
+      </ul>
+
+      <div class="callout">
+        Complexiteit is niet het probleem — gebrek aan ecosystemische structuur is het probleem.
+      </div>
+
+      <h3>2. Afhankelijkheden zijn de echte bottleneck</h3>
+      <p>
+        Frameworks organiseren werk, maar <strong>beheren geen afhankelijkheden</strong>.
+        En afhankelijkheden zijn precies waar systemen breken.
+      </p>
+
+      <h3>3. Drift is overal</h3>
+      <p>Drift ontstaat wanneer:</p>
+      <ul>
+        <li>afspraken vervagen</li>
+        <li>documentatie ontbreekt</li>
+        <li>architectuur niet bewaakt wordt</li>
+      </ul>
+
+      <h3>4. Framework‑inflatie</h3>
+      <p>
+        Organisaties stapelen frameworks, maar lossen structurele problemen niet op —
+        ze <strong>maskeren</strong> ze.
+      </p>
+
+      <div class="callout">
+        De crisis is niet technologisch — de crisis is ecosystemisch.
+      </div>
+    </section>
+
+    <!-- Pagina 4 — Waarom ecosystemisch denken nodig is -->
+    <section class="section" id="page-4">
+      <div class="section-header">
+        <div class="section-title">Waarom ecosystemisch denken nodig is</div>
+        <div class="section-tag">Pagina 4</div>
+      </div>
+
+      <p>
+        Frameworks zijn ontworpen voor teams — ecosystemen voor het geheel.
+        Ecosystemen richten zich op stabiliteit, afhankelijkheden en reproduceerbaarheid.
+      </p>
+
+      <h3>1. Frameworks optimaliseren lokaal, ecosystemen globaal</h3>
+      <ul>
+        <li>Scrum optimaliseert één team</li>
+        <li>Kanban optimaliseert flow</li>
+        <li>DevOps optimaliseert samenwerking</li>
+      </ul>
+
+      <p>Maar ecosystemen optimaliseren:</p>
+      <ul>
+        <li>coherentie tussen teams</li>
+        <li>stabiliteit van het geheel</li>
+        <li>afhankelijkheden</li>
+        <li>reproduceerbaarheid</li>
+      </ul>
+
+      <h3>2. Moderne IT is te complex voor team‑niveau oplossingen</h3>
+      <ul>
+        <li>tientallen teams</li>
+        <li>honderden systemen</li>
+        <li>duizenden afhankelijkheden</li>
+      </ul>
+
+      <h3>3. Ecosystemen voorkomen chaos</h3>
+      <p>Ecosystemen detecteren:</p>
+      <ul>
+        <li>drift</li>
+        <li>afhankelijkheidsbreuken</li>
+        <li>incoherentie</li>
+        <li>architecturale instabiliteit</li>
+      </ul>
+
+      <h3>4. Ecosystemen creëren rust</h3>
+      <p>Rust = stabiliteit, reproduceerbaarheid, coherentie.</p>
+
+      <div class="callout">
+        Ecosystemisch denken is een voorwaarde voor moderne IT‑architectuur.
+      </div>
+    </section>
+
+    <!-- Pagina 5 — Wat is een IT‑ecosysteem? -->
+    <section class="section" id="page-5">
+      <div class="section-header">
+        <div class="section-title">Wat is een IT‑ecosysteem?</div>
+        <div class="section-tag">Pagina 5</div>
+      </div>
+
+      <p>
+        Een IT‑ecosysteem is geen framework of procesmodel — het is een <strong>architecturale bovenlaag</strong>
+        die stabiliteit, coherentie en reproduceerbaarheid bewaakt over het volledige IT‑landschap.
+      </p>
+
+      <p>
+        Het ecosysteem voorkomt dat moderne IT uit elkaar valt onder de druk van complexiteit en afhankelijkheden.
+      </p>
+
+      <h3>1. Principes</h3>
+      <p>De filosofische basis van het ecosysteem.</p>
+
+      <h3>2. Assen</h3>
+      <p>Structureren identiteit, richting en transitie.</p>
+
+      <h3>3. Domeinen</h3>
+      <p>Verdelen complexiteit in ecosystemische zones.</p>
+
+      <h3>4. Modules</h3>
+      <p>Portable ecosystemische componenten.</p>
+
+      <h3>5. Validatieketens</h3>
+      <p>Detecteren drift en inconsistentie.</p>
+
+      <h3>6. Ecosystemische governance</h3>
+      <p>Lichtgewicht maar onverwoestbare stabiliteitsbewaking.</p>
+
+      <div class="callout">
+        Frameworks zijn gereedschap — ecosystemen zijn fundamenten.
+      </div>
+    </section>
+        <!-- Pagina 6 — De filosofie van MIKE‑CORE -->
+    <section class="section" id="page-6">
+      <div class="section-header">
+        <div class="section-title">De filosofie van MIKE‑CORE</div>
+        <div class="section-tag">Pagina 6</div>
+      </div>
+
+      <p>
+        MIKE‑CORE is gebouwd op drie kernprincipes die samen de basis vormen van ecosystemische IT‑architectuur.
+        Deze principes zijn geen methodologie, geen proces en geen framework‑regelset — het zijn
+        <strong>ecosystemische natuurwetten</strong> die bepalen hoe een IT‑landschap zich gedraagt.
+      </p>
+
+      <p>
+        De filosofie van MIKE‑CORE ontstond uit één observatie:
+        <strong>IT faalt niet door technologie, maar door instabiliteit, incoherentie en irreproduceerbaarheid.</strong>
+        Daarom richt MIKE‑CORE zich niet op ritme of ceremonies, maar op de fundamenten die bepalen of een systeem overeind blijft.
+      </p>
+
+      <h3>1. Stabiliteit boven ritme</h3>
+      <p>MIKE‑CORE creëert stabiliteit door:</p>
+      <ul>
+        <li>reproduceerbare structuren</li>
+        <li>coherente domeinen</li>
+        <li>drift‑controle</li>
+        <li>afhankelijkheidsbeheer</li>
+      </ul>
+
+      <h3>2. Coherentie boven snelheid</h3>
+      <p>Snelheid zonder coherentie leidt tot:</p>
+      <ul>
+        <li>technische schuld</li>
+        <li>inconsistentie</li>
+        <li>architecturale breuken</li>
+        <li>onvoorspelbare risico’s</li>
+      </ul>
+
+      <h3>3. Reproduceerbaarheid boven improvisatie</h3>
+      <p>
+        Reproduceerbaarheid is de basis van audit‑veiligheid, schaalbaarheid, betrouwbaarheid en voorspelbaarheid.
+        Een ecosysteem dat niet reproduceerbaar is, is geen ecosysteem.
+      </p>
+
+      <div class="callout">
+        MIKE‑CORE is geen framework — het is een <strong>ecosysteemfilosofie</strong>.
+      </div>
+    </section>
+
+    <!-- Pagina 7 — High‑level architectuur -->
+    <section class="section" id="page-7">
+      <div class="section-header">
+        <div class="section-title">High‑level architectuur (publieke versie)</div>
+        <div class="section-tag">Pagina 7</div>
+      </div>
+
+      <p>
+        De volledige architectuur van MIKE‑CORE blijft gesloten in deze public edition.
+        Wat hieronder staat, is de <strong>conceptuele bovenlaag</strong> — voldoende om het ecosysteem te begrijpen.
+      </p>
+
+      <h3>1. De assen (I‑, R‑, T‑as)</h3>
+      <p>De assen structureren identiteit, richting en transitie.</p>
+
+      <h3>2. Domeinen</h3>
+      <p>Domeinen verdelen complexiteit in ecosystemische zones.</p>
+
+      <h3>3. Modules</h3>
+      <p>Modules zijn portable ecosystemische componenten die drift‑veilig en reproduceerbaar zijn.</p>
+
+      <h3>4. Ecosystemische governance</h3>
+      <p>Governance bewaakt stabiliteit, afhankelijkheden en coherentie.</p>
+
+      <div class="callout">
+        High‑level architectuur is geen blueprint — het is de publieke bovenlaag.
+      </div>
+    </section>
+
+    <!-- Pagina 8 — Ecosystemische principes -->
+    <section class="section" id="page-8">
+      <div class="section-header">
+        <div class="section-title">Ecosystemische principes</div>
+        <div class="section-tag">Pagina 8</div>
+      </div>
+
+      <p>
+        Ecosystemische principes zijn geen aanbevelingen — het zijn <strong>natuurwetten</strong>
+        die stabiliteit, coherentie en reproduceerbaarheid afdwingen.
+      </p>
+
+      <h3>1. Identiteit (I‑as)</h3>
+      <p>Identiteit voorkomt overlap, verwarring en drift.</p>
+
+      <h3>2. Richting (R‑as)</h3>
+      <p>Richting voorkomt dat teams in hun eigen micro‑realiteit verdwijnen.</p>
+
+      <h3>3. Transitie (T‑as)</h3>
+      <p>Transitie is de kunst van veranderen zonder te breken.</p>
+
+      <h3>4. Drift‑controle</h3>
+      <p>MIKE‑CORE detecteert, isoleert en corrigeert drift.</p>
+
+      <h3>5. Coherentie</h3>
+      <p>Coherentie is een architecturale verplichting.</p>
+
+      <h3>6. Reproduceerbaarheid</h3>
+      <p>Reproduceerbaarheid maakt een ecosysteem voorspelbaar, schaalbaar en audit‑veilig.</p>
+
+      <div class="callout">
+        Ecosystemische principes zijn <strong>architecturale waarheden</strong>.
+      </div>
+    </section>
+
+    <!-- Pagina 9 — Reproduceerbaarheid -->
+    <section class="section" id="page-9">
+      <div class="section-header">
+        <div class="section-title">Reproduceerbaarheid als fundament</div>
+        <div class="section-tag">Pagina 9</div>
+      </div>
+
+      <p>
+        Reproduceerbaarheid is het hart van ecosystemische IT.
+        Zonder reproduceerbaarheid ontstaat improvisatie, inconsistentie en afhankelijkheid van individueel geheugen.
+      </p>
+
+      <h3>1. Waarom reproduceerbaarheid essentieel is</h3>
+      <ul>
+        <li>zelfde input → zelfde output</li>
+        <li>zelfde structuur → zelfde stabiliteit</li>
+        <li>zelfde regels → zelfde coherentie</li>
+      </ul>
+
+      <h3>2. Hoe MIKE‑CORE reproduceerbaarheid garandeert</h3>
+      <ul>
+        <li>ecosystemische principes</li>
+        <li>assen die richting en identiteit bewaken</li>
+        <li>domeinen die coherentie afdwingen</li>
+        <li>modules die consistent blijven</li>
+        <li>validatieketens die drift detecteren</li>
+        <li>governance die stabiliteit bewaakt</li>
+      </ul>
+
+      <h3>3. Reproduceerbaarheid is vrijheid</h3>
+      <ul>
+        <li>sneller werken</li>
+        <li>voorspelbare risico’s</li>
+        <li>eenvoudige audits</li>
+        <li>beheersbare afhankelijkheden</li>
+        <li>veiligere innovatie</li>
+      </ul>
+
+      <div class="callout">
+        Reproduceerbaarheid is geen rem — het is een <strong>versneller</strong>.
+      </div>
+    </section>
+
+    <!-- Pagina 10 — Coherentie en stabiliteit -->
+    <section class="section" id="page-10">
+      <div class="section-header">
+        <div class="section-title">Coherentie en stabiliteit</div>
+        <div class="section-tag">Pagina 10</div>
+      </div>
+
+      <p>
+        Coherentie en stabiliteit vormen de ruggengraat van elk volwassen IT‑ecosysteem.
+        Frameworks creëren ritme — ecosystemen creëren stabiliteit.
+      </p>
+
+      <h3>1. Coherentie</h3>
+      <ul>
+        <li>duidelijke identiteit</li>
+        <li>beslissingen volgen ecosystemische richting</li>
+        <li>transities respecteren afhankelijkheden</li>
+        <li>afhankelijkheden zijn zichtbaar en beheersbaar</li>
+      </ul>
+
+      <h3>2. Stabiliteit</h3>
+      <ul>
+        <li>reproduceerbare processen</li>
+        <li>voorspelbare resultaten</li>
+        <li>consistente architectuur</li>
+        <li>minimale drift</li>
+      </ul>
+    </section>
+
+    <!-- Pagina 11 — Ecosystemische governance -->
+    <section class="section" id="page-11">
+      <div class="section-header">
+        <div class="section-title">Ecosystemische governance</div>
+        <div class="section-tag">Pagina 11</div>
+      </div>
+
+      <p>
+        Governance in MIKE‑CORE is lichtgewicht maar onverwoestbaar.
+        Het bewaakt stabiliteit, afhankelijkheden en drift.
+      </p>
+
+      <h3>Wat governance niet is</h3>
+      <ul>
+        <li>bureaucratie</li>
+        <li>micromanagement</li>
+        <li>procespolitie</li>
+      </ul>
+
+      <h3>Wat governance wél is</h3>
+      <ul>
+        <li>ecosystemische bescherming</li>
+        <li>stabiliteitsbewaking</li>
+        <li>coherentie‑garantie</li>
+        <li>preventie van ecosystemische schade</li>
+      </ul>
+
+      <div class="callout">
+        Governance beschermt ecosystemen — niet teams.
+      </div>
+    </section>
+
+    <!-- Pagina 12 — Modules -->
+    <section class="section" id="page-12">
+      <div class="section-header">
+        <div class="section-title">Modules (publieke laag)</div>
+        <div class="section-tag">Pagina 12</div>
+      </div>
+
+      <p>
+        Modules zijn portable ecosystemische componenten die consistent blijven ongeacht context.
+        Ze spelen overal dezelfde stabiliserende rol.
+      </p>
+
+      <h3>Eigenschappen</h3>
+      <ul>
+        <li>drift‑veilig</li>
+        <li>reproduceerbaar</li>
+        <li>ecosystemisch coherent</li>
+        <li>portable tussen omgevingen</li>
+      </ul>
+    </section>
+
+    <!-- Pagina 13 — Domeinen -->
+    <section class="section" id="page-13">
+      <div class="section-header">
+        <div class="section-title">Domeinen (publieke laag)</div>
+        <div class="section-tag">Pagina 13</div>
+      </div>
+
+      <p>
+        Domeinen verdelen complexiteit in beheersbare ecosystemische zones.
+        Ze geven elk deel van de IT‑realiteit een duidelijke plaats en verantwoordelijkheid.
+      </p>
+
+      <p><em>De interne domeinarchitectuur blijft vertrouwelijk.</em></p>
+    </section>
+
+    <!-- Pagina 14 — Waarom ecosystemen werken -->
+    <section class="section" id="page-14">
+      <div class="section-header">
+        <div class="section-title">Waarom ecosystemen werken</div>
+        <div class="section-tag">Pagina 14</div>
+      </div>
+
+      <p>
+        Ecosystemen werken omdat ze gebouwd zijn op realiteit, niet op idealen.
+        Ze erkennen complexiteit, afhankelijkheden en drift — en structureren die.
+      </p>
+
+      <ul>
+        <li>structureren complexiteit</li>
+        <li>beheren afhankelijkheden</li>
+        <li>elimineren drift</li>
+        <li>creëren stabiliteit</li>
+        <li>versterken coherentie</li>
+      </ul>
+
+      <div class="callout">
+        Ecosystemen lossen problemen op die frameworks niet kunnen zien.
+      </div>
+    </section>
+
+    <!-- Pagina 15 — Waarom MIKE‑CORE werkt -->
+    <section class="section" id="page-15">
+      <div class="section-header">
+        <div class="section-title">Waarom MIKE‑CORE werkt</div>
+        <div class="section-tag">Pagina 15</div>
+      </div>
+
+      <p>
+        MIKE‑CORE werkt omdat het vertrekt vanuit ecosystemische realiteit.
+        Het creëert stabiliteit in een wereld waar complexiteit blijft groeien.
+      </p>
+
+      <ul>
+        <li>beperkt drift</li>
+        <li>beheert afhankelijkheden expliciet</li>
+        <li>bewaakt coherentie</li>
+        <li>maakt architectuur reproduceerbaar</li>
+        <li>creëert rust</li>
+      </ul>
+    </section>
+
+    <!-- Pagina 16 — De plaats tussen frameworks -->
+    <section class="section" id="page-16">
+      <div class="section-header">
+        <div class="section-title">De plaats van MIKE‑CORE tussen frameworks</div>
+        <div class="section-tag">Pagina 16</div>
+      </div>
+
+      <p>
+        MIKE‑CORE vervangt geen frameworks — het vormt de <strong>ecosystemische laag</strong>
+        waarbinnen frameworks veilig kunnen functioneren.
+      </p>
+
+      <ul>
+        <li>frameworks organiseren werk</li>
+        <li>MIKE‑CORE bewaakt stabiliteit</li>
+        <li>frameworks creëren ritme</li>
+        <li>MIKE‑CORE creëert rust</li>
+        <li>frameworks focussen op teams</li>
+        <li>MIKE‑CORE focust op het geheel</li>
+      </ul>
+    </section>
+
+    <!-- Pagina 17 — Wat MIKE‑CORE niet is -->
+    <section class="section" id="page-17">
+      <div class="section-header">
+        <div class="section-title">Wat MIKE‑CORE niet is</div>
+        <div class="section-tag">Pagina 17</div>
+      </div>
+
+      <p>MIKE‑CORE is <strong>niet</strong>:</p>
+
+      <ul>
+        <li>geen agile framework</li>
+        <li>geen projectmanagementmethode</li>
+        <li>geen tooling‑suite</li>
+        <li>geen maturity‑model</li>
+        <li>geen verzameling ceremonies</li>
+      </ul>
+
+      <p>MIKE‑CORE is een ecosysteem — een manier van denken en structureren.</p>
+    </section>
+
+    <!-- Pagina 18 — Samenvatting -->
+    <section class="section" id="page-18">
+      <div class="section-header">
+        <div class="section-title">Samenvatting</div>
+        <div class="section-tag">Pagina 18</div>
+      </div>
+
+      <p>Dit hoofdstuk introduceerde:</p>
+      <ul>
+        <li>de crisis van moderne IT</li>
+        <li>ecosystemisch denken</li>
+        <li>wat een IT‑ecosysteem is</li>
+        <li>de filosofie van MIKE‑CORE</li>
+        <li>de high‑level architectuur</li>
+        <li>ecosystemische principes</li>
+        <li>drift‑controle</li>
+        <li>reproduceerbaarheid</li>
+      </ul>
+
+      <p>
+        MIKE‑CORE is geen methode — het is een ecosysteem waarop frameworks veilig kunnen bouwen.
+      </p>
+    </section>
+
+    <!-- Pagina 19 — Slotnota -->
+    <section class="section" id="page-19">
+      <div class="section-header">
+        <div class="section-title">Slotnota</div>
+        <div class="section-tag">Pagina 19</div>
+      </div>
+
+      <p>
+        Deze public edition is een gecontroleerde introductie.
+        De interne blueprint, validatieketens en domeinarchitectuur blijven gesloten om de integriteit van het ecosysteem te beschermen.
+      </p>
+
+      <p>
+        Wat je hier leest is de bovenlaag — voldoende om ecosystemisch te denken,
+        maar niet voldoende om het ecosysteem te reproduceren.
+      </p>
+
+      <div class="callout">
+        MIKE‑CORE is ontworpen om te beschermen — niet om te beperken.
+      </div>
+    </section>
+
+    <!-- Pagina 20 — Copyright -->
+    <section class="section" id="page-20">
+      <div class="section-header">
+        <div class="section-title">Copyright</div>
+        <div class="section-tag">Pagina 20</div>
+      </div>
+
+      <p>
+        © 2026 MIKE‑CORE — All Rights Reserved.<br>
+        Dit document mag publiek gedeeld worden, maar niet gewijzigd, herbouwd of reproduceerd zonder schriftelijke toestemming.
+      </p>
+    </section>
+
+    <div class="footer-note">
+      Over MIKE‑CORE — Public Chapter v1.0
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modules • MIKE‑CORE — Public Overview (NL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;
+      background:var(--bg-main);
+      color:var(--text-main);
+      font-family:var(--font-main);
+      line-height:1.6;
+      padding:40px 0;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 16px 80px;
+    }
+
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+    }
+    .back-btn {
+      padding:10px 20px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--text-main);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      transform:translateY(-2px);
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+    }
+
+    header.hero {
+      text-align:left;
+      margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:20px;
+    }
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:720px;}
+    .hero-meta {margin-top:10px;font-size:12px;color:var(--text-muted);}
+
+    .section {
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--accent-silver);
+      margin-bottom:10px;
+    }
+    p,ul {color:var(--text-soft);font-size:14px;}
+    ul {margin-left:18px;}
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:16px;
+      margin-top:10px;
+    }
+    .card {
+      background:radial-gradient(circle at top,rgba(58,169,255,0.12),transparent 60%),
+                 rgba(8,12,26,0.96);
+      border-radius:14px;
+      border:1px solid rgba(58,169,255,0.25);
+      padding:14px 14px 16px;
+    }
+    .card-label {font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-silver-soft);}
+    .card-title {font-size:15px;color:var(--accent-blue);margin-bottom:6px;}
+    .card p {font-size:13px;margin:0;}
+
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="back-nav">
+    <a href="../index.html" class="back-btn">⟵ Artikels (NL) Root</a>
+    <a href="../../index.html" class="back-btn">⟵ EXTRA Module</a>
+    <a href="../../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  </div>
+
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Modules — Public Overview</h1>
+        <p class="hero-subtitle">
+          Modules vormen de functionele bouwstenen van het MIKE‑CORE ecosysteem — zonder interne blueprint‑architectuur, volledig veilig voor publieke communicatie.
+        </p>
+        <div class="hero-meta">Publieke laag — veilig, niet‑reproduceerbaar.</div>
+      </header>
+
+      <section class="section">
+        <div class="section-title">Wat zijn Modules?</div>
+        <p>
+          Modules zijn <strong>ecosystemische functies</strong> die een duidelijke rol vervullen binnen MIKE‑CORE.  
+          Ze bepalen wat een onderdeel <em>doet</em>, niet hoe het intern werkt.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Rol</div>
+            <div class="card-title">Functionele ecosystem‑onderdelen</div>
+            <p>Modules voeren duidelijke ecosystemische taken uit.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Doel</div>
+            <div class="card-title">Voorkomen van overlap</div>
+            <p>Elke module heeft een unieke functie zonder conflicten.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Effect</div>
+            <div class="card-title">Ecosystemische efficiëntie</div>
+            <p>Modules maken het ecosysteem voorspelbaar en stabiel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Waarom Modules essentieel zijn</div>
+        <p>
+          Modules zorgen voor functionele helderheid en voorkomen dat ecosystemische onderdelen elkaar overlappen of verstoren.
+        </p>
+
+        <ul>
+          <li>Modules maken ecosystemen efficiënt</li>
+          <li>Modules voorkomen functionele conflicten</li>
+          <li>Modules maken governance mogelijk</li>
+          <li>Modules beschermen tegen organisatorische ruis</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Publieke werking</div>
+        <p>
+          De interne werking van modules blijft gesloten.  
+          De publieke laag toont enkel de filosofie en het effect.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Publieke laag</div>
+            <div class="card-title">Herkenbaarheid</div>
+            <p>Modules zijn duidelijk benoemd en afgebakend.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Publieke laag</div>
+            <div class="card-title">Samenhang</div>
+            <p>Modules vormen een coherent geheel binnen MIKE‑CORE.</p>
+          </div>
+          <div class="card">
+            <div class="card-label">Publieke laag</div>
+            <div class="card-title">Stabiliteit</div>
+            <p>Modules voorkomen drift en inconsistentie.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Modules Public Overview NL v1.0
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

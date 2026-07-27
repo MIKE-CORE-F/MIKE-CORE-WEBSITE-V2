@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI‑OS‑FUSION • What‑Is‑Fusion Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg:#05060a;
+      --bg-alt:#0b0d13;
+      --border:#262a36;
+      --accent:#4f7bff;
+      --accent-soft:#1b2640;
+      --text-main:#f5f5f7;
+      --text-muted:#9ca0b3;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      font-family:system-ui,sans-serif;
+      background:radial-gradient(circle at top,#151827 0%,#0b0d13 40%,#05060a 100%);
+      background-size:cover;
+      background-attachment:fixed;
+      color:var(--text-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1600px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* BACK NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+    }
+
+    .back-btn {
+      padding:10px 20px;
+      border-radius:10px;
+      background:var(--bg-alt);
+      border:1px solid var(--border);
+      color:var(--text-main);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+    }
+
+    .back-btn:hover {
+      background:var(--accent-soft);
+      border-color:var(--accent);
+      transform:translateY(-2px);
+    }
+
+    header {
+      text-align:center;
+      margin-bottom:20px;
+      border-bottom:1px solid var(--border);
+      padding-bottom:20px;
+    }
+
+    .logo {
+      width:140px;
+      height:140px;
+      margin:0 auto 1rem;
+      border-radius:24px;
+      background:radial-gradient(circle at top,#4f7bff 0%,#151827 45%,#05060a 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--text-main);
+      box-shadow:0 0 50px rgba(79,123,255,0.45);
+    }
+
+    header h1 {
+      font-size:2.4rem;
+      text-transform:uppercase;
+      margin:0;
+      letter-spacing:0.06em;
+    }
+
+    header p {
+      color:var(--text-muted);
+      max-width:700px;
+      margin:0 auto;
+      font-size:1.05rem;
+      margin-top:0.75rem;
+    }
+
+    /* MODULE GRID */
+    .section-title {
+      margin-top:2.5rem;
+      font-size:1.4rem;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+      color:var(--text-muted);
+      text-align:center;
+    }
+
+    .module-grid {
+      margin-top:2rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:1.5rem;
+    }
+
+    .module-card {
+      background:var(--bg-alt);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:1.6rem;
+      cursor:pointer;
+      transition:background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+      text-decoration:none;
+      color:var(--text-main);
+      display:block;
+    }
+
+    .module-card:hover {
+      background:var(--accent-soft);
+      border-color:var(--accent);
+      transform:translateY(-3px);
+    }
+
+    .module-title {
+      font-size:1.2rem;
+      font-weight:600;
+      margin-bottom:0.4rem;
+      color:var(--accent);
+    }
+
+    .module-desc {
+      font-size:0.95rem;
+      color:var(--text-muted);
+    }
+
+    footer {
+      margin-top:40px;
+      text-align:center;
+      font-size:0.85rem;
+      color:var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- BACK -->
+  <div class="back-nav">
+    <a href="../../index_en.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+    <a href="../index_en.html" class="back-btn">⟵ AI‑OS‑FUSION Home</a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">FUSION</div>
+
+    <h1>What‑Is‑Fusion Module</h1>
+    <p>
+      Select the Dutch or English documentation explaining the public concept of AI‑OS‑FUSION:
+      its role, behaviour, boundaries, and relationship with MIKE‑CORE.
+    </p>
+  </header>
+
+  <!-- MODULE BUTTONS -->
+  <main>
+    <h2 class="section-title">Fusion Documentation</h2>
+
+    <div class="module-grid">
+
+      <a class="module-card" href="AIEWS_Fusion_Explained_v1.1-DUTCH.html">
+        <div class="module-title">Fusion Explained (NL)</div>
+        <div class="module-desc">
+          Nederlandse editie met een publieke uitleg van het AI‑OS‑FUSION ecosysteem.
+        </div>
+      </a>
+
+      <a class="module-card" href="AIEWS_Fusion_Explained_v1.1-EN.html">
+        <div class="module-title">Fusion Explained (EN)</div>
+        <div class="module-desc">
+          English edition explaining the public concept of the AI‑OS‑FUSION ecosystem.
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE – Public Stability Framework v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Publiek overzicht van het ecosystemische stabiliteitsframework binnen MIKE‑CORE." />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --pill-bg: #11141c;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+                  rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero {
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      margin: 14px 0 6px;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-soft);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* TAALSWITCHER */
+    .lang-switch {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .lang-btn {
+      padding: 0.4rem 1rem;
+      background: var(--pill-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-chip);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(58, 169, 255, 0.2);
+      border-color: var(--accent-blue);
+    }
+
+    .lang-btn.active {
+      background: rgba(58, 169, 255, 0.25);
+      border-color: var(--accent-blue);
+      color: var(--text-main);
+      cursor: default;
+    }
+
+    /* NAVIGATIEKNOPPEN */
+    .back-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 28px;
+    }
+
+    .back-btn {
+      padding: 0.6rem 1.2rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(58, 169, 255, 0.15);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    p, ul {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul { margin-left: 18px; }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .framework-card {
+      background: rgba(11, 16, 32, 0.96);
+      border-radius: 12px;
+      border: 1px solid rgba(27, 34, 53, 0.9);
+      padding: 14px 14px 16px;
+    }
+
+    .framework-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-blue-soft);
+      margin-bottom: 4px;
+    }
+
+    .framework-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent-silver);
+      margin-bottom: 6px;
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+      opacity: 0.65;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">MIKE‑CORE ECOSYSTEEM • PUBLIEKE EDITIE</div>
+        <h1 class="hero-title">Publiek Stabiliteitsframework</h1>
+        <p class="hero-subtitle">
+          Een publieke introductie tot het ecosystemische stabiliteitsframework binnen MIKE‑CORE.  
+          Deze pagina toont de bovenste laag van de stabiliteitsarchitectuur zonder interne blauwdrukken, validatieketens of TRIAD-structuren bloot te leggen.
+        </p>
+
+        <!-- TAALSWITCHER -->
+        <div class="lang-switch">
+          <span class="lang-btn active">🇳🇱 Nederlands</span>
+          <a href="./MIKE‑CORE_Public_StabilityFramework_v1.0_EN.html" class="lang-btn">🇬🇧 English</a>
+        </div>
+      </header>
+
+      <!-- NAVIGATIEBALK -->
+      <div class="back-nav">
+        <a href="../../index.html" class="back-btn">⟵ Root Index</a>
+        <a href="./index.html" class="back-btn">⟵ Stabiliteit Index</a>
+      </div>
+
+      <section class="section">
+        <div class="section-title">Wat is Ecosystemische Stabiliteit?</div>
+        <p>
+          Ecosystemische stabiliteit is het vermogen van een IT-landschap om <strong>voorspelbaar, coherent en reproduceerbaar</strong> te blijven,
+          zelfs wanneer teams wisselen, systemen evolueren of afhankelijkheden verschuiven.
+        </p>
+        <p>
+          In MIKE‑CORE is stabiliteit geen proces, geen ritme en geen framework-eigenschap.  
+          Het is een <strong>architecturale eigenschap</strong> die voortvloeit uit ecosystemische principes.
+        </p>
+        <ul>
+          <li>Stabiliteit is onafhankelijk van teams</li>
+          <li>Stabiliteit is onafhankelijk van frameworks</li>
+          <li>Stabiliteit is reproduceerbaar</li>
+          <li>Stabiliteit voorkomt drift</li>
+          <li>Stabiliteit beschermt afhankelijkheden</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Publieke Stabiliteitscomponenten</div>
+        <p>
+          De interne stabiliteitsketens blijven gesloten.  
+          Hieronder bevindt zich enkel de publieke bovenlaag van stabiliteitscomponenten.
+        </p>
+
+        <div class="framework-grid">
+
+          <div class="framework-card">
+            <div class="framework-label">S‑01</div>
+            <div class="framework-title">Reproduceerbaarheid</div>
+            <p>
+              Dezelfde invoer leidt tot dezelfde uitvoer.  
+              Reproduceerbaarheid is het fundament van audit-veiligheid, voorspelbaarheid en schaalbaarheid.
+            </p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-label">S‑02</div>
+            <div class="framework-title">Coherentie</div>
+            <p>
+              Stabiliteit vereist dat alle ecosystemische componenten logisch op elkaar aansluiten.  
+              Coherentie voorkomt fragmentatie en architecturale breuken.
+            </p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-label">S‑03</div>
+            <div class="framework-title">Afhankelijkheidsveiligheid</div>
+            <p>
+              Afhankelijkheden moeten zichtbaar, beheersbaar en stabiel zijn.  
+              Onzichtbare afhankelijkheden zijn de grootste bron van instabiliteit.
+            </p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-label">S‑04</div>
+            <div class="framework-title">Drift-preventie</div>
+            <p>
+              Drift is de spontane afwijking van structuur, richting of kwaliteit.  
+              Stabiliteit voorkomt drift door middel van ecosystemische kaders en controles.
+            </p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-label">S‑05</div>
+            <div class="framework-title">Identiteit & Grenzen</div>
+            <p>
+              Componenten moeten een duidelijke identiteit en afbakening hebben.  
+              Onduidelijke grenzen veroorzaken instabiliteit en rolconflicten.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Publieke Grenzen</div>
+        <p>
+          Deze pagina onthult enkel de publieke bovenlaag van het stabiliteitsframework.  
+          Interne stabiliteitsketens, TRIAD-verbindingen, validatiepaden en blauwdrukstructuren blijven gesloten om de integriteit van MIKE‑CORE te beschermen.
+        </p>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE — Public Ecosystem Layer • Stability Framework v1.0
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

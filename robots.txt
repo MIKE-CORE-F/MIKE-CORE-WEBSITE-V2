@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mike-core-f.github.io/MIKE-CORE-WEBSITE/sitemap.xml

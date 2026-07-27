@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE™ Drift Watchdog Layer — Governance (NL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main:#050814;
+      --bg-panel:#0b1020;
+      --bg-panel-soft:#101628;
+
+      --accent-primary:#ff9100;
+      --accent-primary-soft:#ffb74d;
+      --accent-secondary:#3aa9ff;
+      --accent-secondary-soft:#2a7ac4;
+
+      --text-main:#e5ecf7;
+      --text-soft:#b5c0d4;
+      --text-muted:#7b8496;
+
+      --border-soft:#1b2235;
+      --radius-panel:14px;
+      --radius-chip:999px;
+      --shadow-soft:0 0 40px rgba(0,0,0,0.6);
+
+      --font-main:system-ui,sans-serif;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);
+      font-family:var(--font-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .back-btn {
+      padding:10px 22px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--accent-primary);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+      box-shadow:0 0 14px rgba(255,145,0,0.25);
+    }
+
+    .back-btn:hover {
+      background:var(--accent-primary-soft);
+      border-color:var(--accent-primary);
+      color:var(--text-main);
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(255,145,0,0.45);
+    }
+
+    /* GLASS PANEL */
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(255,145,0,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(58,169,255,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(255,145,0,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header.hero {
+      border-bottom:1px solid rgba(255,145,0,0.35);
+      padding-bottom:20px;
+      margin-bottom:32px;
+      text-align:left;
+    }
+
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(255,145,0,0.18),rgba(58,169,255,0.12));
+      color:var(--accent-primary-soft);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .hero-kicker-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,var(--accent-primary),var(--accent-secondary));
+      box-shadow:0 0 10px rgba(255,145,0,0.9);
+    }
+
+    .hero-title {
+      font-size:32px;
+      margin:14px 0 4px;
+      color:var(--accent-primary);
+      text-transform:uppercase;
+    }
+
+    .hero-subtitle {
+      font-size:16px;
+      color:var(--text-soft);
+      max-width:640px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top:32px;
+      padding:20px 18px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      color:var(--accent-primary-soft);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:10px;
+    }
+
+    p, ul, li {
+      font-size:14px;
+      color:var(--text-soft);
+    }
+
+    ul {
+      margin-left:18px;
+    }
+
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- NAVIGATION -->
+  <div class="back-nav">
+    <a href="../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+    <a href="./index.html" class="back-btn">⟵ DWL Index</a>
+    <a href="./dwl_governance_en.html" class="back-btn">🇬🇧 EN</a>
+  </div>
+
+  <div class="glass-panel">
+
+    <header class="hero">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        <span>DWL • GOVERNANCE</span>
+      </div>
+
+      <h1 class="hero-title">DWL Governance</h1>
+
+      <p class="hero-subtitle">
+        De formele governance‑structuur die bepaalt hoe DWL drift beheert,  
+        escalaties uitvoert en ecosystem‑stabiliteit beschermt.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="section-title">Formele DWL‑Regels</div>
+      <p>
+        DWL‑governance bestaat uit formele regels die bepalen hoe drift wordt gedetecteerd,  
+        geclassificeerd en geëscaleerd binnen het MIKE‑CORE ecosysteem.
+      </p>
+      <ul>
+        <li>Elke afwijking wordt formeel geregistreerd</li>
+        <li>Drift‑type wordt automatisch geclassificeerd</li>
+        <li>Prioriteit wordt bepaald door DWL‑Signals</li>
+        <li>Alle acties zijn reproduceerbaar en audit‑vast</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Escalatieketens</div>
+      <p>
+        DWL gebruikt formele escalatieketens om drift correct door te sturen naar Drift‑Control.
+      </p>
+      <ul>
+        <li>Sensor → Signal → Escalation → Drift‑Control</li>
+        <li>Real‑time overdracht bij kritieke drift</li>
+        <li>Gelaagde escalatie voor complexe ecosystem‑afwijkingen</li>
+        <li>Automatische stabiliteitsacties bij hoge prioriteit</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Stabiliteitsbescherming</div>
+      <p>
+        DWL‑governance beschermt ecosystem‑stabiliteit door drift vroegtijdig te neutraliseren.
+      </p>
+      <ul>
+        <li>Preventieve interventies</li>
+        <li>Herstelacties bij ecosystem‑instabiliteit</li>
+        <li>Formele koppeling met Stability Layer</li>
+        <li>Volledige audit‑traceerbaarheid</li>
+      </ul>
+    </section>
+
+    <div class="footer-note">
+      © 2026 MIKE‑CORE™ — Drift Watchdog Layer • Governance (NL)
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

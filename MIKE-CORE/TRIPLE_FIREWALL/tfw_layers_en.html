@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE™ Triple Firewall — Layers (EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main:#050814;
+      --bg-panel:#0b1020;
+      --bg-panel-soft:#101628;
+
+      --accent-primary:#ff3d3d;
+      --accent-primary-soft:#ff7575;
+      --accent-secondary:#3aa9ff;
+      --accent-secondary-soft:#2a7ac4;
+
+      --text-main:#e5ecf7;
+      --text-soft:#b5c0d4;
+      --text-muted:#7b8496;
+
+      --border-soft:#1b2235;
+      --radius-panel:14px;
+      --radius-chip:999px;
+      --shadow-soft:0 0 40px rgba(0,0,0,0.6);
+
+      --font-main:system-ui,sans-serif;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);
+      font-family:var(--font-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .back-btn {
+      padding:10px 22px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--accent-primary);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+      box-shadow:0 0 14px rgba(255,61,61,0.25);
+    }
+
+    .back-btn:hover {
+      background:var(--accent-primary-soft);
+      border-color:var(--accent-primary);
+      color:var(--text-main);
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(255,61,61,0.45);
+    }
+
+    /* GLASS PANEL */
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(255,61,61,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(58,169,255,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(255,61,61,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header.hero {
+      border-bottom:1px solid rgba(255,61,61,0.35);
+      padding-bottom:20px;
+      margin-bottom:32px;
+      text-align:left;
+    }
+
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(255,61,61,0.18),rgba(58,169,255,0.12));
+      color:var(--accent-primary-soft);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .hero-kicker-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,var(--accent-primary),var(--accent-secondary));
+      box-shadow:0 0 10px rgba(255,61,61,0.9);
+    }
+
+    .hero-title {
+      font-size:32px;
+      margin:14px 0 4px;
+      color:var(--accent-primary);
+      text-transform:uppercase;
+    }
+
+    .hero-subtitle {
+      font-size:16px;
+      color:var(--text-soft);
+      max-width:640px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top:32px;
+      padding:20px 18px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      color:var(--accent-primary-soft);
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:10px;
+    }
+
+    p, ul, li {
+      font-size:14px;
+      color:var(--text-soft);
+    }
+
+    ul {
+      margin-left:18px;
+    }
+
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- NAVIGATION -->
+  <div class="back-nav">
+    <a href="../index_en.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+    <a href="./index_en.html" class="back-btn">⟵ Triple Firewall Index</a>
+    <a href="./tfw_layers.html" class="back-btn">🇳🇱 NL</a>
+  </div>
+
+  <div class="glass-panel">
+
+    <header class="hero">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        <span>TRIPLE FIREWALL • LAYERS</span>
+      </div>
+
+      <h1 class="hero-title">TFW Layers</h1>
+
+      <p class="hero-subtitle">
+        The three formal firewall layers that block drift, guarantee ecosystem safety  
+        and protect the MIKE‑CORE architecture from instability.
+      </p>
+    </header>
+
+    <section class="section">
+      <div class="section-title">Firewall‑I — Ecosystem Flow Block</div>
+      <p>
+        Firewall‑I blocks unwanted ecosystem flows and prevents unstable or invalid  
+        data from spreading through the ecosystem.
+      </p>
+      <ul>
+        <li>Blocking invalid module flows</li>
+        <li>Neutralizing unwanted layer interactions</li>
+        <li>Preventing cross‑layer drift</li>
+        <li>Formal flow validation</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Firewall‑II — Drift Neutralization</div>
+      <p>
+        Firewall‑II neutralizes drift behaviour the moment it emerges.  
+        It prevents anomalies from evolving into ecosystem instability.
+      </p>
+      <ul>
+        <li>Detection of drift patterns</li>
+        <li>Neutralization of abnormal module behaviour</li>
+        <li>Semantic drift correction</li>
+        <li>Real‑time stability interventions</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Firewall‑III — Identity & Stability Protection</div>
+      <p>
+        Firewall‑III protects the identity, stability and formal structure  
+        of the MIKE‑CORE ecosystem.
+      </p>
+      <ul>
+        <li>Protection of ecosystem identity</li>
+        <li>Stability anchoring</li>
+        <li>Formal linkage with DWL and the Stability Layer</li>
+        <li>Audit‑proof ecosystem behaviour</li>
+      </ul>
+    </section>
+
+    <div class="footer-note">
+      © 2026 MIKE‑CORE™ — Triple Firewall • Layers (EN)
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

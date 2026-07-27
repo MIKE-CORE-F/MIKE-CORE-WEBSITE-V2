@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE Praktische Trainingsvoorbeelden — Publieke Editie v1.0 (NL)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE — All Rights Reserved" />
+
+  <style>
+    :root {
+      --bg-main:#050814;
+      --bg-panel:#0b1020;
+      --bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;
+      --accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;
+      --accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;
+      --text-soft:#b5c0d4;
+      --text-muted:#7b8496;
+      --border-soft:#1b2235;
+      --shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;
+      --radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --font-mono:"Cascadia Code","Fira Code",monospace;
+    }
+
+    body {
+      margin:0;
+      padding:0;
+      font-family:var(--font-main);
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);
+      line-height:1.6;
+    }
+
+    .page-wrap {
+      max-width:1100px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+    }
+
+    /* NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .back-btn {
+      padding:10px 22px;
+      border-radius:10px;
+      background:var(--bg-panel-soft);
+      border:1px solid var(--border-soft);
+      color:var(--accent-blue);
+      text-decoration:none;
+      font-size:14px;
+      transition:0.15s ease;
+      box-shadow:0 0 14px rgba(58,169,255,0.25);
+    }
+
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      color:var(--text-main);
+      transform:translateY(-2px);
+      box-shadow:0 0 22px rgba(58,169,255,0.45);
+    }
+
+    /* GLASS PANEL */
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+        rgba(5,8,20,0.92);
+      border-radius:24px;
+      border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);
+      padding:32px 26px 40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+        radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    /* HERO */
+    header.hero {
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:20px;
+      margin-bottom:32px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 14px;
+      border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .hero-kicker-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {
+      font-size:32px;
+      margin:14px 0 4px;
+      text-transform:uppercase;
+      color:var(--accent-blue);
+    }
+
+    .hero-subtitle {
+      font-size:16px;
+      color:var(--text-soft);
+      max-width:720px;
+    }
+
+    .hero-meta {
+      margin-top:10px;
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-top:32px;
+      padding:20px 18px 22px;
+      border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      color:var(--accent-silver);
+      margin-bottom:10px;
+    }
+
+    /* GRID */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:16px;
+      margin-top:10px;
+    }
+
+    .card {
+      background:radial-gradient(circle at top,rgba(58,169,255,0.12),transparent 60%),
+                  rgba(8,12,26,0.96);
+      border-radius:14px;
+      border:1px solid rgba(58,169,255,0.25);
+      padding:14px 14px 16px;
+    }
+
+    .card-label {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--accent-silver-soft);
+      margin-bottom:4px;
+    }
+
+    .card-title {
+      font-size:15px;
+      color:var(--accent-blue);
+      margin-bottom:6px;
+    }
+
+    .card p {
+      font-size:13px;
+      color:var(--text-soft);
+      margin:0;
+    }
+
+    /* FOOTER */
+    .footer-note {
+      margin-top:26px;
+      font-size:11px;
+      color:var(--text-muted);
+      text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <!-- NAVIGATION -->
+    <div class="back-nav">
+      <a href="index.html" class="back-btn">⟵ Training Voorbeelden Index</a>
+    </div>
+
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE • PUBLIEKE EDITIE</span>
+        </div>
+        <h1 class="hero-title">Praktische Trainingsvoorbeelden</h1>
+        <p class="hero-subtitle">
+          Concreet, reproduceerbaar en ecosystemisch: voorbeelden van MIKE‑CORE‑trainingen die jongeren, professionals en kwetsbare groepen helpen groeien via stabiliteit en structuur.
+        </p>
+        <div class="hero-meta">
+          Deze pagina toont enkel publieke voorbeelden. Interne methodes blijven beschermd.
+        </div>
+      </header>
+
+      <!-- Waarom praktische voorbeelden -->
+      <section class="section">
+        <div class="section-title">Waarom praktische voorbeelden?</div>
+        <p>
+          Theorie zonder toepassing blijft abstract. MIKE‑CORE werkt met kleine, veilige, reproduceerbare oefeningen die mensen structuur, inzicht en vertrouwen geven. Deze voorbeelden tonen hoe ecosystemisch leren er in de praktijk uitziet.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Doel</div>
+            <div class="card-title">Van theorie naar stabiliteit</div>
+            <p>
+              Elke oefening bouwt stabiliteit op, geen druk. De focus ligt op inzicht, niet op prestatie.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Aanpak</div>
+            <div class="card-title">Kleine stappen</div>
+            <p>
+              Kleine opdrachten die reproduceerbaar zijn en nooit overweldigen.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Impact</div>
+            <div class="card-title">Ecosystemische groei</div>
+            <p>
+              Wat werkt, wordt vastgelegd en herhaald — voor dezelfde persoon of voor anderen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voorbeeld 1 -->
+      <section class="section">
+        <div class="section-title">Voorbeeld 1 — Basis Hardware Diagnose</div>
+        <p>
+          Een eenvoudige oefening die jongeren en beginners leert hoe je een systeem bekijkt zonder paniek of aannames.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Stap 1</div>
+            <div class="card-title">Visuele inspectie</div>
+            <p>
+              Kabels, voeding, indicatorlampjes, fysieke schade. Geen tools, enkel observatie.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Stap 2</div>
+            <div class="card-title">Contextvragen</div>
+            <p>
+              Wat gebeurde ervoor? Wie gebruikte het? Wat veranderde? Ecosysteem i.p.v. schuld.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Stap 3</div>
+            <div class="card-title">Reproduceerbare test</div>
+            <p>
+              Eén test tegelijk. Geen chaos. Alles noteerbaar en herhaalbaar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voorbeeld 2 -->
+      <section class="section">
+        <div class="section-title">Voorbeeld 2 — Ecosystemische Drukanalyse</div>
+        <p>
+          Een oefening die professionals helpt om problemen niet op individuen te plakken, maar op het systeem.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Element 1</div>
+            <div class="card-title">Druk</div>
+            <p>
+              Welke verwachtingen, deadlines of ruis beïnvloeden gedrag?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Element 2</div>
+            <div class="card-title">Structuur</div>
+            <p>
+              Welke stappen ontbreken? Welke rollen zijn onduidelijk?
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Element 3</div>
+            <div class="card-title">Context</div>
+            <p>
+              Welke externe factoren spelen mee? Hardware, omgeving, communicatie?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voorbeeld 3 -->
+      <section class="section">
+        <div class="section-title">Voorbeeld 3 — Drift Herkennen</div>
+        <p>
+          Een oefening die mensen leert herkennen wanneer een systeem afwijkt van zijn bedoeling.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Signaal 1</div>
+            <div class="card-title">Ruis</div>
+            <p>
+              Te veel informatie, te weinig structuur, tegenstrijdige verwachtingen.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Signaal 2</div>
+            <div class="card-title">Overbelasting</div>
+            <p>
+              Te veel taken, te weinig tijd, geen prioriteiten.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-label">Signaal 3</div>
+            <div class="card-title">Verlies van reproduceerbaarheid</div>
+            <p>
+              Dingen gebeuren “anders” elke keer. Geen voorspelbaarheid meer.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE Ecosystem — Publieke Laag v1.0<br>
+        Deze pagina toont enkel publieke voorbeelden.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

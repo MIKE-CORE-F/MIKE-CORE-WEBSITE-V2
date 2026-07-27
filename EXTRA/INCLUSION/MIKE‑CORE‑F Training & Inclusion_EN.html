@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIKE‑CORE‑F Training & Inclusion — Public Edition v1.5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg-main: #050814;
+      --bg-panel: #0b1020;
+      --bg-panel-soft: #101628;
+      --accent-blue: #3aa9ff;
+      --accent-blue-soft: #2a7ac4;
+      --accent-silver: #cfd8e3;
+      --accent-silver-soft: #9aa4b5;
+      --text-main: #e5ecf7;
+      --text-soft: #b5c0d4;
+      --text-muted: #7b8496;
+      --border-soft: #1b2235;
+      --shadow-soft: 0 0 40px rgba(0, 0, 0, 0.6);
+      --radius-panel: 14px;
+      --radius-chip: 999px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "Cascadia Code", "Fira Code", monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #101a33 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+
+    /* NAVIGATION */
+    .nav-bar {
+      margin-bottom: 24px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+    }
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: #101628;
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.15s ease;
+    }
+    .nav-btn:hover {
+      background: #2a7ac4;
+      border-color: #3aa9ff;
+      transform: translateY(-2px);
+    }
+
+    .glass-panel {
+      background:
+        radial-gradient(circle at top left, rgba(58, 169, 255, 0.12), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(207, 216, 227, 0.08), transparent 60%),
+        rgba(5, 8, 20, 0.92);
+      border-radius: 24px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 26px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(58, 169, 255, 0.35);
+      padding-bottom: 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(90deg, rgba(58, 169, 255, 0.18), rgba(207, 216, 227, 0.12));
+      color: var(--accent-silver);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 10px rgba(58, 169, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 32px;
+      margin: 14px 0 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 680px;
+    }
+
+    .hero-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section {
+      margin-top: 32px;
+      padding: 20px 18px 22px;
+      border-radius: var(--radius-panel);
+      background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(5, 8, 20, 0.98));
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent-silver);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      color: var(--accent-blue);
+      margin: 14px 0 6px;
+    }
+
+    p, ul {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    ul {
+      margin-left: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(58, 169, 255, 0.12), transparent 60%),
+                  rgba(8, 12, 26, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(58, 169, 255, 0.25);
+      padding: 14px 14px 16px;
+    }
+
+    .card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(58, 169, 255, 0.35);
+      font-size: 11px;
+      color: var(--accent-silver);
+      background: rgba(5, 10, 24, 0.9);
+    }
+
+    .timeline {
+      margin-top: 10px;
+      border-left: 1px solid rgba(58, 169, 255, 0.4);
+      padding-left: 14px;
+    }
+
+    .timeline-step {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3aa9ff, #2a7ac4);
+      box-shadow: 0 0 8px rgba(58, 169, 255, 0.8);
+    }
+
+    .timeline-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-silver-soft);
+    }
+
+    .timeline-title {
+      font-size: 14px;
+      color: var(--accent-blue);
+    }
+
+    .cta-box {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(58, 169, 255, 0.5);
+      background: rgba(5, 10, 24, 0.9);
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .footer-note {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <div class="nav-bar">
+    <a href="../../index.html" class="nav-btn">⟵ MIKE‑CORE Root</a>
+    <a href="../index.html" class="nav-btn">⟵ EXTRA Module</a>
+    <a href="index.html" class="nav-btn">⟵ INCLUSION (EN)</a>
+  </div>
+
+  <div class="page-wrap">
+    <div class="glass-panel">
+
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          <span>MIKE‑CORE‑F • PUBLIC EDITION</span>
+        </div>
+        <h1 class="hero-title">Training & Inclusion</h1>
+        <p class="hero-subtitle">
+          A socio‑technical ecosystem that builds stability for youth, professionals and vulnerable groups —
+          with an explicit fight against throw‑away culture in people, hardware and knowledge.
+        </p>
+        <div class="hero-meta">
+          This page describes the public mission of MIKE‑CORE‑F: how training, inclusion and anti‑waste thinking form one ecosystem.
+        </div>
+      </header>
+
+      <!-- Why this page exists -->
+      <section class="section">
+        <div class="section-title">Why this page exists</div>
+        <p>
+          MIKE‑CORE‑F is more than an IT ecosystem. It is a structure that protects people, creates stability and opens opportunities
+          for everyone — regardless of diploma, background or starting position. This page shows how training, inclusion and
+          anti‑waste culture form a socio‑technical layer on top of the technical frameworks.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Focus</div>
+            <div class="card-title">People first, systems second</div>
+            <p>
+              Not the tool, but the person is central. MIKE‑CORE‑F uses structure to protect people from chaos,
+              pressure and unnecessary failure experiences.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Goal</div>
+            <div class="card-title">Stability as a basic right</div>
+            <p>
+              Everyone deserves a stable environment to learn, work and grow — including those who fall out of classical systems.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Method</div>
+            <div class="card-title">Ecosystemic thinking</div>
+            <p>
+              Problems are not viewed in isolation, but in their full context: person, process, hardware, knowledge and environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Training structure -->
+      <section class="section">
+        <div class="section-title">Training structure</div>
+        <p>
+          MIKE‑CORE‑F uses a reproducible training structure that works for youth, professionals and vulnerable groups.
+          The structure is designed to reduce pressure, avoid chaos and build stability.
+        </p>
+
+        <h3>The 4 building blocks of training</h3>
+        <ul>
+          <li><strong>1. Language</strong> — people receive words to understand their situation.</li>
+          <li><strong>2. Structure</strong> — fixed patterns that create safety and predictability.</li>
+          <li><strong>3. Context</strong> — insight into why things break or get stuck.</li>
+          <li><strong>4. Reproducible steps</strong> — small, safe actions that always work.</li>
+        </ul>
+
+        <div class="cta-box">
+          These four building blocks form the foundation of every MIKE‑CORE‑F training, regardless of target group or starting level.
+        </div>
+      </section>
+
+      <!-- Inclusion in action -->
+      <section class="section">
+        <div class="section-title">Inclusion in action</div>
+        <p>
+          Inclusion within MIKE‑CORE‑F is not theory, but daily practice. The ecosystem actively protects people
+          from pressure, chaos and failure experiences.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <div class="card-label">Action 1</div>
+            <div class="card-title">Hardware rescue</div>
+            <p>
+              Youth and adults repair hardware, learn ecosystemic thinking and build stability through physical projects.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Action 2</div>
+            <div class="card-title">Context conversations</div>
+            <p>
+              People receive language and insight to understand their situation — without judgment, without pressure.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Action 3</div>
+            <div class="card-title">Anti‑waste culture</div>
+            <p>
+              Hardware, knowledge and people are never thrown away. Everything receives a second life.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ecosystemic cycle -->
+      <section class="section">
+        <div class="section-title">Ecosystemic cycle</div>
+        <p>
+          Training & inclusion within MIKE‑CORE‑F follow a reproducible cycle that works in any context.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Step 1 — Visibility</div>
+            <div class="timeline-title">Making problems visible</div>
+            <p>
+              The person is not the problem — the context, pressure or missing structure is.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Step 2 — Stability</div>
+            <div class="timeline-title">Building a safe foundation</div>
+            <p>
+              People receive structure, language and reproducible steps to regain control.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Step 3 — Growth</div>
+            <div class="timeline-title">Scaling what works</div>
+            <p>
+              What works is documented and repeated — without pressure, without chaos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        © 2026 MIKE‑CORE‑F Ecosystem — Public Layer v1.5
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

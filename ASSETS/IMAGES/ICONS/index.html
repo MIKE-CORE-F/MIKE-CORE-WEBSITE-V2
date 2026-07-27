@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>MIKE‑CORE • Icon Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-alt: #0b0d13;
+      --border: #262a36;
+      --accent: #4f7bff;
+      --accent-soft: #1b2640;
+      --text-main: #f5f5f7;
+      --text-muted: #9ca0b3;
+    }
+
+    /* GLOBAL */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top center,
+        #151827 0%,
+        #0b0d13 40%,
+        #05060a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ULTRAWIDE + RESPONSIVE FIX */
+    .container {
+      width: min(100%, 1400px);
+      padding: clamp(1rem, 2vw, 3rem);
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .logo {
+      width: clamp(80px, 10vw, 120px);
+      height: clamp(80px, 10vw, 120px);
+      margin: 0 auto 1rem;
+      border-radius: 20px;
+      background: radial-gradient(circle at top, #4f7bff 0%, #151827 45%, #05060a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      box-shadow: 0 0 40px rgba(79, 123, 255, 0.45);
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    }
+
+    /* NAVIGATION */
+    .back-nav {
+      margin: clamp(1.5rem, 3vw, 3rem) 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .back-btn {
+      padding: 0.7rem 1.2rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: clamp(0.85rem, 1vw, 1rem);
+      transition: 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    /* MAIN SECTION */
+    .section-title {
+      margin-top: 2rem;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .empty {
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    }
+
+    /* FOOTER */
+    footer {
+      font-size: clamp(0.75rem, 1vw, 0.95rem);
+      color: var(--text-muted);
+      text-align: center;
+      padding: clamp(1.5rem, 3vw, 3rem) 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <div class="logo">ICONS</div>
+  <h1>Icon Library</h1>
+  <p class="tagline">
+    Ecosystem‑iconen voor MIKE‑CORE, FUSION, TRIAD en AIEWS.
+  </p>
+</header>
+
+<div class="back-nav">
+  <a href="../../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  <a href="../../index.html" class="back-btn">⟵ ASSETS Home</a>
+  <a href="../index.html" class="back-btn">⟵ IMAGES Home</a>
+  <a href="index.html" class="back-btn">⟵ ICONS Home</a>
+</div>
+
+<main>
+  <h2 class="section-title">Icon Sets</h2>
+
+  <p class="empty">
+    Er zijn momenteel nog geen icon‑afbeeldingen beschikbaar in deze map.<br>
+    Voeg icon‑bestanden toe in <code>ASSETS/IMAGES/ICONS/</code> om ze hier zichtbaar te maken.
+  </p>
+</main>
+
+<footer>
+  <p>
+    © 2026 MIKE‑CORE™ IT‑Constitutional Ecosystem<br>
+    Reproduceerbaar • Audit‑vast • Juridisch beschermd
+  </p>
+</footer>
+
+</div>
+
+</body>
+</html>

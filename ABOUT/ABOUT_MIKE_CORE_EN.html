@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About MIKE‑CORE — Public Chapter v1.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Official public introduction to the MIKE‑CORE ecosystem: stability, coherence and reproducibility in modern IT architecture." />
+  <meta name="keywords" content="MIKE-CORE, IT ecosystem, ecosystemic architecture, reproducibility, stability, coherence, drift, dependencies" />
+  <meta name="author" content="MIKE Verhelst" />
+
+  <style>
+    :root {
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+
+    body {
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
+    }
+
+    .page-wrap {max-width:1100px;margin:0 auto;padding:40px 16px 80px;}
+
+    /* NAVIGATION */
+    .back-nav {
+      margin-bottom:24px;
+      display:flex;gap:12px;justify-content:center;
+    }
+    .back-btn {
+      padding:10px 20px;border-radius:10px;
+      background:var(--bg-panel-soft);border:1px solid var(--border-soft);
+      color:var(--text-main);text-decoration:none;font-size:14px;
+      transition:0.15s ease;
+    }
+    .back-btn:hover {
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
+      transform:translateY(-2px);
+    }
+
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;position:relative;overflow:hidden;
+    }
+
+    .glass-panel::before {
+      content:"";position:absolute;inset:-40%;
+      background:radial-gradient(circle at 10% 0%,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at 90% 100%,rgba(207,216,227,0.10),transparent 55%);
+      opacity:.7;pointer-events:none;z-index:-1;
+    }
+
+    header.hero {
+      text-align:left;margin-bottom:32px;
+      border-bottom:1px solid rgba(58,169,255,0.35);padding-bottom:20px;
+    }
+
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .hero-kicker-dot {
+      width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#3aa9ff,#2a7ac4);
+      box-shadow:0 0 10px rgba(58,169,255,0.9);
+    }
+
+    .hero-title {font-size:32px;margin:14px 0 4px;text-transform:uppercase;color:var(--accent-blue);}
+    .hero-subtitle {font-size:16px;color:var(--text-soft);max-width:640px;}
+
+    .hero-meta {
+      margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;
+      font-size:12px;color:var(--text-muted);
+    }
+    .hero-meta span {
+      padding:3px 10px;border-radius:var(--radius-chip);
+      border:1px solid rgba(154,164,181,0.4);background:rgba(11,16,32,0.8);
+    }
+
+    .section {
+      margin-top:32px;padding:20px 18px 22px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
+    .section-header {
+      display:flex;align-items:baseline;justify-content:space-between;
+      gap:12px;margin-bottom:10px;
+    }
+
+    .section-title {
+      font-size:18px;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;color:var(--accent-silver);
+    }
+
+    .section-tag {
+      font-size:11px;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--accent-blue-soft);
+    }
+
+    h3 {font-size:16px;color:var(--accent-blue);}
+    h4 {font-size:14px;color:var(--accent-silver-soft);}
+    p,ul,li {font-size:14px;color:var(--text-soft);}
+    ul {margin-left:18px;}
+
+    .callout {
+      margin-top:10px;padding:10px 12px;border-radius:10px;
+      background:radial-gradient(circle at left,rgba(58,169,255,0.18),transparent 60%),
+                 rgba(8,12,26,0.96);
+      border:1px solid rgba(58,169,255,0.45);font-size:13px;color:var(--accent-silver);
+    }
+
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrap">
+
+  <!-- Correct navigation -->
+  <div class="back-nav">
+    <a href="../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+    <a href="index.html" class="back-btn">⟵ ABOUT MIKE‑CORE</a>
+  </div>
+
+  <div class="glass-panel">
+
+    <!-- Page 1 — Cover -->
+    <header class="hero" id="page-1">
+      <div class="hero-kicker">
+        <span class="hero-kicker-dot"></span>
+        <span>MIKE‑CORE ECOSYSTEM • PUBLIC CHAPTER</span>
+      </div>
+
+      <h1 class="hero-title">About MIKE‑CORE</h1>
+
+      <p class="hero-subtitle">
+        A deep exploration of the MIKE‑CORE ecosystem: stability, coherence and reproducibility in modern IT architecture.
+        This chapter is an official public edition — fully safe, without core or blueprint.
+      </p>
+
+      <div class="hero-meta">
+        <span>© 2026 MIKE‑CORE — All Rights Reserved</span>
+        <span>Public Chapter v1.0</span>
+        <span>Architect: MIKE Verhelst</span>
+      </div>
+    </header>
+
+    <!-- Page 2 — Foreword -->
+    <section class="section" id="page-2">
+      <div class="section-header">
+        <div class="section-title">Foreword</div>
+        <div class="section-tag">Page 2</div>
+      </div>
+
+      <p>
+        The modern IT world evolves faster than organizations can follow. Systems grow more complex,
+        dependencies increase exponentially and traditional frameworks are less and less able to guarantee stability.
+        In this reality, <strong>MIKE‑CORE</strong> emerged — not as a framework, but as an <strong>ecosystem</strong>.
+      </p>
+
+      <p>
+        This chapter is written for everyone who feels that IT is no longer helped by yet another process model,
+        ceremony or maturity model. It is intended for organizations that understand that the real problems lie in
+        <strong>ecosystemic instability</strong>.
+      </p>
+
+      <p>
+        This public edition reveals the philosophy, principles and high‑level structure of MIKE‑CORE,
+        while deliberately keeping all core mechanisms, blueprint architecture and validation chains closed.
+      </p>
+
+      <p>You will learn:</p>
+      <ul>
+        <li>the philosophical basis of ecosystemic thinking</li>
+        <li>the high‑level structure of MIKE‑CORE</li>
+        <li>the role of stability, coherence and reproducibility</li>
+        <li>how ecosystems transform IT</li>
+      </ul>
+
+      <p>You will not get:</p>
+      <ul>
+        <li>internal domain architecture</li>
+        <li>validation chains</li>
+        <li>TRIAD core mechanisms</li>
+        <li>ecosystemic nerve pathways</li>
+        <li>operational implementation details</li>
+      </ul>
+
+      <div class="callout">
+        MIKE‑CORE is not a method — it is a way of seeing, thinking and structuring.
+      </div>
+    </section>
+
+    <!-- Page 3 — The crisis of modern IT -->
+    <section class="section" id="page-3">
+      <div class="section-header">
+        <div class="section-title">The Crisis of Modern IT</div>
+        <div class="section-tag">Page 3</div>
+      </div>
+
+      <p>
+        The IT sector is in a structural crisis. Not because technology fails,
+        but because <strong>our way of organizing</strong> no longer matches the reality of modern ecosystems.
+      </p>
+
+      <h3>1. Complexity grows faster than structure</h3>
+      <p>Modern IT environments consist of:</p>
+      <ul>
+        <li>microservices and cloud platforms</li>
+        <li>API chains and distributed workloads</li>
+        <li>hybrid infrastructures and legacy systems</li>
+      </ul>
+
+      <p>But structures are often:</p>
+      <ul>
+        <li>ad‑hoc</li>
+        <li>team‑based instead of ecosystemic</li>
+        <li>dependent on individual memory</li>
+        <li>not reproducible</li>
+      </ul>
+
+      <div class="callout">
+        Complexity is not the problem — lack of ecosystemic structure is.
+      </div>
+
+      <h3>2. Dependencies are the real bottleneck</h3>
+      <p>Frameworks organize work, but do not manage dependencies — and dependencies are where systems break.</p>
+
+      <h3>3. Drift is everywhere</h3>
+      <p>Drift emerges when agreements fade, documentation is missing or architecture is not monitored.</p>
+
+      <h3>4. Framework inflation</h3>
+      <p>Organizations stack frameworks, but structural problems remain hidden.</p>
+
+      <div class="callout">
+        The crisis is not technological — it is ecosystemic.
+      </div>
+    </section>
+
+    <!-- Page 4 — Why ecosystemic thinking is needed -->
+    <section class="section" id="page-4">
+      <div class="section-header">
+        <div class="section-title">Why Ecosystemic Thinking Is Needed</div>
+        <div class="section-tag">Page 4</div>
+      </div>
+
+      <p>
+        Frameworks are designed for teams — ecosystems for the whole.
+        Ecosystems focus on stability, dependencies and reproducibility.
+      </p>
+
+      <h3>1. Frameworks optimize locally, ecosystems globally</h3>
+      <ul>
+        <li>Scrum optimizes one team</li>
+        <li>Kanban optimizes flow</li>
+        <li>DevOps optimizes collaboration</li>
+      </ul>
+
+      <p>Ecosystems optimize:</p>
+      <ul>
+        <li>coherence between teams</li>
+        <li>stability of the whole</li>
+        <li>dependencies</li>
+        <li>reproducibility</li>
+      </ul>
+
+      <h3>2. Modern IT is too complex for team‑level solutions</h3>
+      <ul>
+        <li>dozens of teams</li>
+        <li>hundreds of systems</li>
+        <li>thousands of dependencies</li>
+      </ul>
+
+      <h3>3. Ecosystems prevent chaos</h3>
+      <p>Ecosystems detect:</p>
+      <ul>
+        <li>drift</li>
+        <li>dependency breaks</li>
+        <li>incoherence</li>
+        <li>architectural instability</li>
+      </ul>
+
+      <h3>4. Ecosystems create calm</h3>
+      <p>Calm = stability, reproducibility, coherence.</p>
+
+      <div class="callout">
+        Ecosystemic thinking is a requirement for modern IT architecture.
+      </div>
+    </section>
+
+    <!-- Page 5 — What is an IT ecosystem? -->
+    <section class="section" id="page-5">
+      <div class="section-header">
+        <div class="section-title">What Is an IT Ecosystem?</div>
+        <div class="section-tag">Page 5</div>
+      </div>
+
+      <p>
+        An IT ecosystem is not a framework or process model — it is an <strong>architectural layer</strong>
+        that safeguards stability, coherence and reproducibility across the entire IT landscape.
+      </p>
+
+      <p>
+        It prevents modern IT from collapsing under the pressure of complexity and dependencies.
+      </p>
+
+      <h3>1. Principles</h3>
+      <p>The philosophical foundation of the ecosystem.</p>
+
+      <h3>2. Axes</h3>
+      <p>Structure identity, direction and transition.</p>
+
+      <h3>3. Domains</h3>
+      <p>Divide complexity into ecosystemic zones.</p>
+
+      <h3>4. Modules</h3>
+      <p>Portable ecosystemic components.</p>
+
+      <h3>5. Validation Chains</h3>
+      <p>Detect drift and inconsistency.</p>
+
+      <h3>6. Ecosystemic Governance</h3>
+      <p>Lightweight but unbreakable stability protection.</p>
+
+      <div class="callout">
+        Frameworks are tools — ecosystems are foundations.
+      </div>
+    </section>
+        <!-- Page 6 — The Philosophy of MIKE‑CORE -->
+    <section class="section" id="page-6">
+      <div class="section-header">
+        <div class="section-title">The Philosophy of MIKE‑CORE</div>
+        <div class="section-tag">Page 6</div>
+      </div>
+
+      <p>
+        MIKE‑CORE is built on three core principles that form the foundation of ecosystemic IT architecture.
+        These principles are not a methodology, not a process and not a framework rule set — they are
+        <strong>ecosystemic natural laws</strong> that determine how an IT landscape behaves.
+      </p>
+
+      <p>
+        The philosophy of MIKE‑CORE emerged from one observation:
+        <strong>IT does not fail because of technology, but because of instability, incoherence and irreproducibility.</strong>
+        MIKE‑CORE focuses on the foundations that determine whether a system remains standing under pressure.
+      </p>
+
+      <h3>1. Stability over rhythm</h3>
+      <p>MIKE‑CORE creates stability through:</p>
+      <ul>
+        <li>reproducible structures</li>
+        <li>coherent domains</li>
+        <li>drift control</li>
+        <li>dependency management</li>
+      </ul>
+
+      <h3>2. Coherence over speed</h3>
+      <p>Speed without coherence leads to:</p>
+      <ul>
+        <li>technical debt</li>
+        <li>inconsistency</li>
+        <li>architectural breaks</li>
+        <li>unpredictable risks</li>
+      </ul>
+
+      <h3>3. Reproducibility over improvisation</h3>
+      <p>
+        Reproducibility is the basis of audit safety, scalability, reliability and predictability.
+        An ecosystem that is not reproducible is not an ecosystem.
+      </p>
+
+      <div class="callout">
+        MIKE‑CORE is not a framework — it is an <strong>ecosystem philosophy</strong>.
+      </div>
+    </section>
+
+    <!-- Page 7 — High‑Level Architecture -->
+    <section class="section" id="page-7">
+      <div class="section-header">
+        <div class="section-title">High‑Level Architecture (Public Version)</div>
+        <div class="section-tag">Page 7</div>
+      </div>
+
+      <p>
+        The full architecture of MIKE‑CORE remains closed in this public edition.
+        What follows is the <strong>conceptual top layer</strong> — enough to understand the ecosystem without exposing internal blueprint logic.
+      </p>
+
+      <h3>1. The Axes (I, R, T)</h3>
+      <p>The axes structure identity, direction and transition.</p>
+
+      <h3>2. Domains</h3>
+      <p>Domains divide complexity into ecosystemic zones.</p>
+
+      <h3>3. Modules</h3>
+      <p>Modules are portable ecosystemic components that remain consistent and drift‑safe.</p>
+
+      <h3>4. Ecosystemic Governance</h3>
+      <p>Governance safeguards stability, dependencies and coherence.</p>
+
+      <div class="callout">
+        High‑level architecture is not a blueprint — it is the public top layer.
+      </div>
+    </section>
+
+    <!-- Page 8 — Ecosystemic Principles -->
+    <section class="section" id="page-8">
+      <div class="section-header">
+        <div class="section-title">Ecosystemic Principles</div>
+        <div class="section-tag">Page 8</div>
+      </div>
+
+      <p>
+        Ecosystemic principles are not recommendations — they are <strong>natural laws</strong>
+        that enforce stability, coherence and reproducibility.
+      </p>
+
+      <h3>1. Identity (I‑axis)</h3>
+      <p>Identity prevents overlap, confusion and drift.</p>
+
+      <h3>2. Direction (R‑axis)</h3>
+      <p>Direction prevents teams from disappearing into their own micro‑realities.</p>
+
+      <h3>3. Transition (T‑axis)</h3>
+      <p>Transition is the art of changing without breaking.</p>
+
+      <h3>4. Drift Control</h3>
+      <p>MIKE‑CORE detects, isolates and corrects drift.</p>
+
+      <h3>5. Coherence</h3>
+      <p>Coherence is an architectural obligation.</p>
+
+      <h3>6. Reproducibility</h3>
+      <p>Reproducibility makes an ecosystem predictable, scalable and audit‑safe.</p>
+
+      <div class="callout">
+        Ecosystemic principles are <strong>architectural truths</strong>.
+      </div>
+    </section>
+
+    <!-- Page 9 — Reproducibility -->
+    <section class="section" id="page-9">
+      <div class="section-header">
+        <div class="section-title">Reproducibility as a Foundation</div>
+        <div class="section-tag">Page 9</div>
+      </div>
+
+      <p>
+        Reproducibility is the heart of ecosystemic IT.
+        Without reproducibility, improvisation, inconsistency and dependency on individual memory emerge.
+      </p>
+
+      <h3>1. Why reproducibility is essential</h3>
+      <ul>
+        <li>same input → same output</li>
+        <li>same structure → same stability</li>
+        <li>same rules → same coherence</li>
+      </ul>
+
+      <h3>2. How MIKE‑CORE guarantees reproducibility</h3>
+      <ul>
+        <li>ecosystemic principles</li>
+        <li>axes that safeguard identity and direction</li>
+        <li>domains that enforce coherence</li>
+        <li>modules that remain consistent</li>
+        <li>validation chains that detect drift</li>
+        <li>governance that protects stability</li>
+      </ul>
+
+      <h3>3. Reproducibility is freedom</h3>
+      <ul>
+        <li>faster work</li>
+        <li>predictable risks</li>
+        <li>simple audits</li>
+        <li>manageable dependencies</li>
+        <li>safer innovation</li>
+      </ul>
+
+      <div class="callout">
+        Reproducibility is not a brake — it is a <strong>multiplier</strong>.
+      </div>
+    </section>
+
+    <!-- Page 10 — Coherence and Stability -->
+    <section class="section" id="page-10">
+      <div class="section-header">
+        <div class="section-title">Coherence and Stability</div>
+        <div class="section-tag">Page 10</div>
+      </div>
+
+      <p>
+        Coherence and stability form the backbone of any mature IT ecosystem.
+        Frameworks create rhythm — ecosystems create stability.
+      </p>
+
+      <h3>1. Coherence</h3>
+      <ul>
+        <li>clear identity</li>
+        <li>decisions follow ecosystemic direction</li>
+        <li>transitions respect dependencies</li>
+        <li>dependencies are visible and manageable</li>
+      </ul>
+
+      <h3>2. Stability</h3>
+      <ul>
+        <li>reproducible processes</li>
+        <li>predictable results</li>
+        <li>consistent architecture</li>
+        <li>minimal drift</li>
+      </ul>
+    </section>
+
+    <!-- Page 11 — Ecosystemic Governance -->
+    <section class="section" id="page-11">
+      <div class="section-header">
+        <div class="section-title">Ecosystemic Governance</div>
+        <div class="section-tag">Page 11</div>
+      </div>
+
+      <p>
+        Governance in MIKE‑CORE is lightweight but unbreakable.
+        It safeguards stability, dependencies and drift.
+      </p>
+
+      <h3>What governance is not</h3>
+      <ul>
+        <li>bureaucracy</li>
+        <li>micromanagement</li>
+        <li>process policing</li>
+      </ul>
+
+      <h3>What governance is</h3>
+      <ul>
+        <li>ecosystemic protection</li>
+        <li>stability monitoring</li>
+        <li>coherence guarantee</li>
+        <li>prevention of ecosystemic damage</li>
+      </ul>
+
+      <div class="callout">
+        Governance protects ecosystems — not teams.
+      </div>
+    </section>
+
+    <!-- Page 12 — Modules -->
+    <section class="section" id="page-12">
+      <div class="section-header">
+        <div class="section-title">Modules (Public Layer)</div>
+        <div class="section-tag">Page 12</div>
+      </div>
+
+      <p>
+        Modules are portable ecosystemic components that remain consistent regardless of context.
+        They play the same stabilizing role in every MIKE‑CORE ecosystem.
+      </p>
+
+      <h3>Properties</h3>
+      <ul>
+        <li>drift‑safe</li>
+        <li>reproducible</li>
+        <li>ecosystemically coherent</li>
+        <li>portable across environments</li>
+      </ul>
+    </section>
+
+    <!-- Page 13 — Domains -->
+    <section class="section" id="page-13">
+      <div class="section-header">
+        <div class="section-title">Domains (Public Layer)</div>
+        <div class="section-tag">Page 13</div>
+      </div>
+
+      <p>
+        Domains divide complexity into manageable ecosystemic zones.
+        They give each part of the IT reality a clear place and responsibility.
+      </p>
+
+      <p><em>The internal domain architecture remains confidential.</em></p>
+    </section>
+
+    <!-- Page 14 — Why Ecosystems Work -->
+    <section class="section" id="page-14">
+      <div class="section-header">
+        <div class="section-title">Why Ecosystems Work</div>
+        <div class="section-tag">Page 14</div>
+      </div>
+
+      <p>
+        Ecosystems work because they are built on reality, not on ideals.
+        They acknowledge complexity, dependencies and drift — and structure them instead of ignoring them.
+      </p>
+
+      <ul>
+        <li>structure complexity</li>
+        <li>manage dependencies</li>
+        <li>eliminate drift</li>
+        <li>create stability</li>
+        <li>strengthen coherence</li>
+      </ul>
+
+      <div class="callout">
+        Ecosystems solve problems frameworks cannot see.
+      </div>
+    </section>
+
+    <!-- Page 15 — Why MIKE‑CORE Works -->
+    <section class="section" id="page-15">
+      <div class="section-header">
+        <div class="section-title">Why MIKE‑CORE Works</div>
+        <div class="section-tag">Page 15</div>
+      </div>
+
+      <p>
+        MIKE‑CORE works because it starts from ecosystemic reality instead of process‑driven ideals.
+        It creates stability in a world where complexity and dependencies keep growing.
+      </p>
+
+      <ul>
+        <li>limits drift</li>
+        <li>manages dependencies explicitly</li>
+        <li>safeguards coherence</li>
+        <li>makes architecture reproducible</li>
+        <li>creates calm</li>
+      </ul>
+    </section>
+
+    <!-- Page 16 — MIKE‑CORE Among Frameworks -->
+    <section class="section" id="page-16">
+      <div class="section-header">
+        <div class="section-title">The Place of MIKE‑CORE Among Frameworks</div>
+        <div class="section-tag">Page 16</div>
+      </div>
+
+      <p>
+        MIKE‑CORE does not replace frameworks — it forms the <strong>ecosystemic layer</strong>
+        within which frameworks can operate safely.
+      </p>
+
+      <ul>
+        <li>frameworks organize work</li>
+        <li>MIKE‑CORE safeguards stability</li>
+        <li>frameworks create rhythm</li>
+        <li>MIKE‑CORE creates calm</li>
+        <li>frameworks focus on teams</li>
+        <li>MIKE‑CORE focuses on the whole</li>
+      </ul>
+    </section>
+
+    <!-- Page 17 — What MIKE‑CORE Is Not -->
+    <section class="section" id="page-17">
+      <div class="section-header">
+        <div class="section-title">What MIKE‑CORE Is Not</div>
+        <div class="section-tag">Page 17</div>
+      </div>
+
+      <p>MIKE‑CORE is <strong>not</strong>:</p>
+
+      <ul>
+        <li>an agile framework</li>
+        <li>a project management method</li>
+        <li>a tooling suite</li>
+        <li>a maturity model</li>
+        <li>a collection of ceremonies</li>
+      </ul>
+
+      <p>MIKE‑CORE is an ecosystem — a way of thinking and structuring.</p>
+    </section>
+
+    <!-- Page 18 — Summary -->
+    <section class="section" id="page-18">
+      <div class="section-header">
+        <div class="section-title">Summary</div>
+        <div class="section-tag">Page 18</div>
+      </div>
+
+      <p>This chapter introduced:</p>
+      <ul>
+        <li>the crisis of modern IT</li>
+        <li>ecosystemic thinking</li>
+        <li>what an IT ecosystem is</li>
+        <li>the philosophy of MIKE‑CORE</li>
+        <li>the high‑level architecture</li>
+        <li>ecosystemic principles</li>
+        <li>drift control</li>
+        <li>reproducibility</li>
+      </ul>
+
+      <p>
+        MIKE‑CORE is not a method — it is an ecosystem on which frameworks can build safely.
+      </p>
+    </section>
+
+    <!-- Page 19 — Closing Note -->
+    <section class="section" id="page-19">
+      <div class="section-header">
+        <div class="section-title">Closing Note</div>
+        <div class="section-tag">Page 19</div>
+      </div>
+
+      <p>
+        This public edition is a controlled introduction.
+        The internal blueprint, validation chains and domain architecture remain closed to protect the integrity of the ecosystem.
+      </p>
+
+      <p>
+        What you read here is the top layer — enough to think ecosystemically,
+        but not enough to reproduce the ecosystem.
+      </p>
+
+      <div class="callout">
+        MIKE‑CORE is designed to protect — not to limit.
+      </div>
+    </section>
+
+    <!-- Page 20 — Copyright -->
+    <section class="section" id="page-20">
+      <div class="section-header">
+        <div class="section-title">Copyright</div>
+        <div class="section-tag">Page 20</div>
+      </div>
+
+      <p>
+        © 2026 MIKE‑CORE — All Rights Reserved.<br>
+        This document may be shared publicly, but not modified, rebuilt or reproduced without written permission.
+      </p>
+    </section>
+
+    <div class="footer-note">
+      About MIKE‑CORE — Public Chapter v1.0
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
