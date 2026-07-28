@@ -2,152 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI‑OS‑FUSION • What‑Is‑Fusion Module</title>
+  <title>AI‑OS‑FUSION • Fusion Explanation (EN)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="MIKE Verhelst" />
+  <meta name="copyright" content="© 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved" />
 
   <style>
     :root {
-      --bg:#05060a;
-      --bg-alt:#0b0d13;
-      --border:#262a36;
-      --accent:#4f7bff;
-      --accent-soft:#1b2640;
-      --text-main:#f5f5f7;
-      --text-muted:#9ca0b3;
+      --bg-main:#050814;--bg-panel:#0b1020;--bg-panel-soft:#101628;
+      --accent-blue:#3aa9ff;--accent-blue-soft:#2a7ac4;
+      --accent-silver:#cfd8e3;--accent-silver-soft:#9aa4b5;
+      --text-main:#e5ecf7;--text-soft:#b5c0d4;--text-muted:#7b8496;
+      --border-soft:#1b2235;--shadow-soft:0 0 40px rgba(0,0,0,0.6);
+      --radius-panel:14px;--radius-chip:999px;
+      --font-main:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
 
     body {
-      margin:0;
-      padding:0;
-      font-family:system-ui,sans-serif;
-      background:radial-gradient(circle at top,#151827 0%,#0b0d13 40%,#05060a 100%);
-      background-size:cover;
-      background-attachment:fixed;
-      color:var(--text-main);
-      line-height:1.6;
+      margin:0;padding:0;
+      background:radial-gradient(circle at top,#101a33 0,#050814 55%,#02030a 100%);
+      color:var(--text-main);font-family:var(--font-main);line-height:1.6;
     }
 
-    .page-wrap {
-      max-width:1600px;
-      margin:0 auto;
-      padding:40px 16px 80px;
-    }
+    .page-wrap {max-width:1600px;margin:0 auto;padding:40px 16px 80px;}
 
-    /* BACK NAVIGATION */
     .back-nav {
       margin-bottom:24px;
-      display:flex;
-      gap:12px;
-      justify-content:center;
+      display:flex;gap:12px;justify-content:center;
     }
-
     .back-btn {
-      padding:10px 20px;
-      border-radius:10px;
-      background:var(--bg-alt);
-      border:1px solid var(--border);
-      color:var(--text-main);
-      text-decoration:none;
-      font-size:14px;
+      padding:10px 20px;border-radius:10px;
+      background:var(--bg-panel-soft);border:1px solid var(--border-soft);
+      color:var(--text-main);text-decoration:none;font-size:14px;
       transition:0.15s ease;
     }
-
     .back-btn:hover {
-      background:var(--accent-soft);
-      border-color:var(--accent);
+      background:var(--accent-blue-soft);
+      border-color:var(--accent-blue);
       transform:translateY(-2px);
     }
 
-    header {
-      text-align:center;
-      margin-bottom:20px;
-      border-bottom:1px solid var(--border);
-      padding-bottom:20px;
+    .glass-panel {
+      background:radial-gradient(circle at top left,rgba(58,169,255,0.12),transparent 55%),
+                 radial-gradient(circle at bottom right,rgba(207,216,227,0.08),transparent 60%),
+                 rgba(5,8,20,0.92);
+      border-radius:24px;border:1px solid rgba(58,169,255,0.25);
+      box-shadow:var(--shadow-soft);padding:32px 26px 40px;
     }
 
-    .logo {
-      width:140px;
-      height:140px;
-      margin:0 auto 1rem;
-      border-radius:24px;
-      background:radial-gradient(circle at top,#4f7bff 0%,#151827 45%,#05060a 100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      color:var(--text-main);
-      box-shadow:0 0 50px rgba(79,123,255,0.45);
+    header.hero {
+      border-bottom:1px solid rgba(58,169,255,0.35);
+      padding-bottom:20px;margin-bottom:32px;
     }
 
-    header h1 {
-      font-size:2.4rem;
-      text-transform:uppercase;
-      margin:0;
-      letter-spacing:0.06em;
+    .hero-kicker {
+      display:inline-flex;align-items:center;gap:8px;
+      padding:4px 14px;border-radius:var(--radius-chip);
+      background:linear-gradient(90deg,rgba(58,169,255,0.18),rgba(207,216,227,0.12));
+      color:var(--accent-silver);font-size:12px;text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
-    header p {
-      color:var(--text-muted);
-      max-width:700px;
-      margin:0 auto;
-      font-size:1.05rem;
-      margin-top:0.75rem;
+    .hero-title {
+      font-size:32px;margin:14px 0 4px;text-transform:uppercase;
+      color:var(--accent-blue);
     }
 
-    /* MODULE GRID */
+    .hero-subtitle {
+      font-size:16px;color:var(--text-soft);max-width:640px;
+    }
+
+    .section {
+      margin-top:32px;padding:20px 18px;border-radius:var(--radius-panel);
+      background:linear-gradient(145deg,rgba(11,16,32,0.96),rgba(5,8,20,0.98));
+      border:1px solid var(--border-soft);
+    }
+
     .section-title {
-      margin-top:2.5rem;
-      font-size:1.4rem;
-      letter-spacing:0.04em;
-      text-transform:uppercase;
-      color:var(--text-muted);
-      text-align:center;
+      font-size:18px;font-weight:600;color:var(--accent-silver);
+      text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;
     }
 
-    .module-grid {
-      margin-top:2rem;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:1.5rem;
-    }
+    p,ul,li {font-size:14px;color:var(--text-soft);}
+    ul {margin-left:18px;}
 
-    .module-card {
-      background:var(--bg-alt);
-      border-radius:12px;
-      border:1px solid var(--border);
-      padding:1.6rem;
-      cursor:pointer;
-      transition:background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-      text-decoration:none;
-      color:var(--text-main);
-      display:block;
-    }
-
-    .module-card:hover {
-      background:var(--accent-soft);
-      border-color:var(--accent);
-      transform:translateY(-3px);
-    }
-
-    .module-title {
-      font-size:1.2rem;
-      font-weight:600;
-      margin-bottom:0.4rem;
-      color:var(--accent);
-    }
-
-    .module-desc {
-      font-size:0.95rem;
-      color:var(--text-muted);
-    }
-
-    footer {
-      margin-top:40px;
-      text-align:center;
-      font-size:0.85rem;
-      color:var(--text-muted);
+    .footer-note {
+      margin-top:26px;font-size:11px;color:var(--text-muted);text-align:right;
     }
   </style>
 </head>
@@ -155,50 +95,64 @@
 <body>
 <div class="page-wrap">
 
-  <!-- BACK -->
-  <div class="back-nav">
-    <a href="../../index_en.html" class="back-btn">⟵ MIKE‑CORE Root</a>
-    <a href="../index_en.html" class="back-btn">⟵ AI‑OS‑FUSION Home</a>
-  </div>
+<div class="back-nav">
+  <a href="../../index.html" class="back-btn">⟵ MIKE‑CORE Root</a>
+  <a href="../index.html" class="back-btn">⟵ AI‑OS‑FUSION Subsystem</a>
+</div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">FUSION</div>
+<div class="glass-panel">
 
-    <h1>What‑Is‑Fusion Module</h1>
-    <p>
-      Select the Dutch or English documentation explaining the public concept of AI‑OS‑FUSION:
-      its role, behaviour, boundaries, and relationship with MIKE‑CORE.
-    </p>
-  </header>
+<header class="hero">
+  <div class="hero-kicker">AI‑OS‑FUSION • MODULE</div>
+  <h1 class="hero-title">Fusion Explanation</h1>
+  <p class="hero-subtitle">
+    A public, doctrine‑safe explanation of what AI‑OS‑FUSION is and how it positions itself around MIKE‑CORE.
+  </p>
+</header>
 
-  <!-- MODULE BUTTONS -->
-  <main>
-    <h2 class="section-title">Fusion Documentation</h2>
+<section class="section">
+  <div class="section-title">What is Fusion?</div>
+  <p>
+    AI‑OS‑FUSION is a controlled ecosystem layer that forms around MIKE‑CORE.
+    It safeguards stability, reproducibility, audit‑rigidity, and drift‑prevention.
+    Fusion only exposes public concepts — never internal kernel logic.
+  </p>
+</section>
 
-    <div class="module-grid">
+<section class="section">
+  <div class="section-title">Public Properties</div>
+  <ul>
+    <li>Predictable AI behavior</li>
+    <li>Ecosystem boundaries</li>
+    <li>Reproducible interactions</li>
+    <li>Drift prevention</li>
+    <li>Doctrine consistency</li>
+  </ul>
+</section>
 
-      <a class="module-card" href="AIEWS_Fusion_Explained_v1.1-DUTCH.html">
-        <div class="module-title">Fusion Explained (NL)</div>
-        <div class="module-desc">
-          Nederlandse editie met een publieke uitleg van het AI‑OS‑FUSION ecosysteem.
-        </div>
-      </a>
+<section class="section">
+  <div class="section-title">What Fusion Does Not Show</div>
+  <ul>
+    <li>No internal architecture</li>
+    <li>No technical blueprint</li>
+    <li>No validation chains</li>
+    <li>No implementation details</li>
+  </ul>
+</section>
 
-      <a class="module-card" href="AIEWS_Fusion_Explained_v1.1-EN.html">
-        <div class="module-title">Fusion Explained (EN)</div>
-        <div class="module-desc">
-          English edition explaining the public concept of the AI‑OS‑FUSION ecosystem.
-        </div>
-      </a>
+<section class="section">
+  <div class="section-title">Role Within the Ecosystem</div>
+  <p>
+    Fusion forms a protective layer around MIKE‑CORE.
+    It ensures that all subsystems operate within safe, stable, and audit‑rigid boundaries.
+  </p>
+</section>
 
-    </div>
-  </main>
+<div class="footer-note">
+  © 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved
+</div>
 
-  <footer>
-    © 2026 MIKE‑CORE / AI‑OS‑FUSION — All Rights Reserved
-  </footer>
-
+</div>
 </div>
 </body>
 </html>
