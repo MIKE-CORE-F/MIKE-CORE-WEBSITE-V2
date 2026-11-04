@@ -1,133 +1,64 @@
 # MIKE-CORE-WEBSITE-V2
-Next‑gen MIKE‑CORE ecosystem website (V2), rebuilt for stability, clarity, governance‑traceability and international adoption.
-📘 README.md (NL + EN)
-Plak dit gewoon in je README.md:
 
-🇳🇱 MIKE‑CORE‑WEBSITE‑V2 — Publieke Ecosysteem Website (V2)
-MIKE‑CORE‑WEBSITE‑V2 is de tweede generatie van de officiële MIKE‑CORE™ publieke website.
-Deze versie introduceert een volledig herbouwde HTML‑architectuur, verbeterde structuur, hogere performance en een duidelijke scheiding tussen ecosystem‑modules, documentatie en publieke content.
+**The next-generation MIKE-CORE™ ecosystem website (V2), completely rebuilt for stability, structural clarity, governance traceability, and global adoption.**
 
-🔥 Doel van V2
-Hogere stabiliteit en duidelijkheid
+---
 
-Governance‑traceability volgens MIKE‑CORE doctrine
+## 🌐 Overview
+**MIKE-CORE-WEBSITE-V2** is the second-generation official public baseline website for the MIKE-CORE™ architecture. This version introduces a fully overhauled HTML architecture, improved file layout, high-performance optimization, and strict separation between core ecosystem modules, systems documentation, and public facing content.
 
-Internationale adoptie en schaalbaarheid
+## 🔥 Core Objectives
+* **Increased Stability & Structural Clarity:** Fully modularized layout to support zero-exposure boundary protection.
+* **Governance Traceability:** Grounded alignment with the core MIKE-CORE doctrine.
+* **International Adoption:** Formatted for global scalability and multilingual frameworks.
+* **Performance Optimization:** Enhanced loading speeds through structured layout and optimized assets.
 
-Snellere laadtijden en geoptimaliseerde assets
-
-Volledig transparante ecosystem‑architectuur
+## 📁 Repository Structure
+```text
 MIKE-CORE-WEBSITE-V2/
-│ index.html
-│ ecosystem.html
-│ architecture.html
-│ governance.html
-│ contact.html
+│   index.html
+│   ecosystem.html
+│   architecture.html
+│   governance.html
+│   contact.html
 │
 ├── assets/
-│     ├── css/
-│     ├── js/
-│     └── img/
+│   ├── css/
+│   ├── js/
+│   └── img/
 │
 ├── modules/
-│     ├── core/
-│     ├── fusion/
-│     └── triad/
+│   ├── core/
+│   ├── fusion/
+│   └── triad/
 │
 └── docs/
-      ├── ecosystem/
-      ├── architecture/
-      └── governance/
-🌐 Deployment (GitHub Pages)
-Ga naar Settings
+    ├── ecosystem/
+    ├── architecture/
+    └── governance/
+```
 
-Kies Pages
+## 🚀 Live Deployment via GitHub Pages
+To publish the dashboard frontend baseline directly to the web:
+1. Navigate to the repository **Settings** tab on GitHub.
+2. Select **Pages** from the left-hand navigation menu.
+3. Under Build and deployment, choose **Deploy from a branch**.
+4. Select the `main` branch and set the folder path to `/ (root)`.
+5. Click **Save** to trigger the automated build pipeline.
 
-Selecteer Deploy from main
+## 🧩 Ecosystem Doctrine
+This public layer contains documentation, layout wrappers, and interface structures for:
+* **MIKE-CORE Fundamentals:** Baseline definitions and operational principles.
+* **Modular Infrastructure:** Architectural blueprints for core subsystems.
+* **Drift Control & Stability Framework:** Watchdog logic and telemetry simulation layout.
+* **Triple Firewall Systems:** Zero-trust security boundaries.
+* **AIEWS-OS-FUSION Architecture:** Distributed kernel topology layout.
+* **TRIAD 3-Layer Map:** Structural system configuration blueprints.
 
-Kies root
+## 📬 Contact & Collaboration
+For inquiries regarding system scalability benchmarks, customized architecture configurations, or deployment protocols, reach out via the official communications channel:
 
-Website wordt automatisch gepubliceerd
+📧 **Official Email:** [mikecore.public@gmail.com](mailto:mikecore.public@gmail.com)
 
-🧩 Ecosystem doctrine
-Deze website bevat publieke documentatie voor:
-
-MIKE‑CORE Fundamentals
-
-MIKE‑CORE Modules
-
-Drift Control & Stability Framework
-
-Triple Firewall
-
-AIEWS‑OS‑FUSION Architecture
-
-TRIAD 3‑Layer Map
-
-📬 Contact
-mikecore.public@gmail.com
-🇬🇧 MIKE‑CORE‑WEBSITE‑V2 — Public Ecosystem Website (V2)
-MIKE‑CORE‑WEBSITE‑V2 is the second‑generation official MIKE‑CORE™ public website.
-This version introduces a fully rebuilt HTML architecture, improved structure, higher performance, and a clear separation between ecosystem modules, documentation, and public content.
-
-🔥 Purpose of V2
-Increased stability and clarity
-
-Governance traceability aligned with MIKE‑CORE doctrine
-
-International adoption and scalability
-
-Faster load times and optimized assets
-
-Fully transparent ecosystem architecture
-
-📁 Repository Structure
-MIKE-CORE-WEBSITE-V2/
-│ index.html
-│ ecosystem.html
-│ architecture.html
-│ governance.html
-│ contact.html
-│
-├── assets/
-│     ├── css/
-│     ├── js/
-│     └── img/
-│
-├── modules/
-│     ├── core/
-│     ├── fusion/
-│     └── triad/
-│
-└── docs/
-      ├── ecosystem/
-      ├── architecture/
-      └── governance/
-🌐 Deployment (GitHub Pages)
-Go to Settings
-
-Select Pages
-
-Choose Deploy from main
-
-Select root
-
-The website will be published automatically
-
-🧩 Ecosystem Doctrine
-This website contains public documentation for:
-
-MIKE‑CORE Fundamentals
-
-MIKE‑CORE Modules
-
-Drift Control & Stability Framework
-
-Triple Firewall
-
-AIEWS‑OS‑FUSION Architecture
-
-TRIAD 3‑Layer Map
-
-📬 Contact
-mikecore.public@gmail.com
+---
+*Copyright © 2026 MIKE-CORE Ecosystems. All Rights Reserved.*
